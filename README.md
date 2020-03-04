@@ -75,7 +75,7 @@ Starting screen
     - After choosing options and categories, it takes you to the end screen which shows a map with a chosen restaurant and its descrioption
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://i.imgur.com/cSNEXAE.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
