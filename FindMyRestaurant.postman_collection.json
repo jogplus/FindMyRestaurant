@@ -25,7 +25,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://api.yelp.com/v3/categories",
+					"raw": "https://api.yelp.com/v3/businesses/search?term=restaurants&location=Irvine",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -34,10 +34,68 @@
 					],
 					"path": [
 						"v3",
-						"categories"
+						"businesses",
+						"search"
+					],
+					"query": [
+						{
+							"key": "term",
+							"value": "restaurants"
+						},
+						{
+							"key": "location",
+							"value": "Irvine"
+						}
 					]
 				},
 				"description": "https://www.yelp.com/developers/documentation/v3/category"
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.yelp.com/v3/businesses/search?term=restaurants&location=Irvine",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "WFvjr_ky_VpN9xFiATyW5YZUTPNTkGfwk0ngT52CYTRl13vr_xRaKcxh7NRncmw_q6U19TyhsBO4NFuEJjimVG0rfuXEOMjWch8YHmknMtPR5q32N1Y_J0zxMVphXnYx",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.yelp.com/v3/businesses/search?term=restaurants&location=Irvine",
+					"protocol": "https",
+					"host": [
+						"api",
+						"yelp",
+						"com"
+					],
+					"path": [
+						"v3",
+						"businesses",
+						"search"
+					],
+					"query": [
+						{
+							"key": "term",
+							"value": "restaurants"
+						},
+						{
+							"key": "location",
+							"value": "Irvine"
+						}
+					]
+				},
+				"description": "https://www.yelp.com/developers/documentation/v3/business_search"
 			},
 			"response": []
 		}
