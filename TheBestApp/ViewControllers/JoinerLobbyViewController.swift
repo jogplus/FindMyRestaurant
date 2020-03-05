@@ -7,16 +7,45 @@
 //
 
 import UIKit
+import Parse
 
 class JoinerLobbyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let session = PFUser.current()
+        let userCount = Int(truncating: session!["userCount"] as! NSNumber) + 1
+        PFUser.current()!.setObject(userCount, forKey: "userCount")
+        PFUser.current()!.saveInBackground { (success, error) in
+            if success {
+                print("we were successful")
+            } else {
+                print("this is bad")
+            }
+        }
+        
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
 
+        if self.isMovingFromParent {
+            
+            let session = PFUser.current()
+            let userCount = Int(truncating: session!["userCount"] as! NSNumber) - 1
+            PFUser.current()!.setObject(userCount, forKey: "userCount")
+            PFUser.current()!.saveInBackground { (success, error) in
+                if success {
+                    print("we were successful")
+                } else {
+                    print("this is bad")
+                }
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

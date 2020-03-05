@@ -287,7 +287,7 @@
         <!--Waiting To Start-->
         <scene sceneID="Vm0-n5-SPH">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Uw5-Og-RN1" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Uw5-Og-RN1" customClass="JoinerLobbyViewController" customModule="TheBestApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="43S-3p-MiC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
