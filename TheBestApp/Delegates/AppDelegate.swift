@@ -28,8 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.initialize(
                with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
                 configuration.applicationId = self.infoForKey("PARSE_APP_ID")
-                configuration.clientKey = self.infoForKey("PARSE_MASTER_KEY")
-                configuration.server = self.infoForKey("PARSE_API_SERVER")!
+//                configuration.clientKey = self.infoForKey("PARSE_MASTER_KEY")
+                configuration.server = "https://"+self.infoForKey("PARSE_API_SERVER")!
                })
            )
         
