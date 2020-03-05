@@ -243,7 +243,7 @@
         <!--Join Session-->
         <scene sceneID="mJO-DC-8k7">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="NZj-lf-ld4" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="NZj-lf-ld4" customClass="JoinSessionViewController" customModule="TheBestApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JTg-xD-Ys7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -253,7 +253,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Join"/>
                                 <connections>
-                                    <segue destination="Uw5-Og-RN1" kind="show" id="vz8-Jb-8Ts"/>
+                                    <action selector="joinSession:" destination="NZj-lf-ld4" eventType="touchUpInside" id="cbx-lb-yuK"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NOT VALID!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vjP-VO-vHC">
@@ -274,6 +274,11 @@
                         <viewLayoutGuide key="safeArea" id="KPe-5I-HU5"/>
                     </view>
                     <navigationItem key="navigationItem" title="Join Session" id="2KT-VJ-wJo"/>
+                    <connections>
+                        <outlet property="sessionIDTextField" destination="ceA-Ff-Dp4" id="DEE-Qq-sHq"/>
+                        <outlet property="validSessionLabel" destination="vjP-VO-vHC" id="wKO-z0-MuQ"/>
+                        <segue destination="Uw5-Og-RN1" kind="show" identifier="sessionJoinSeg" id="s03-9W-hCH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ao-WN-KQd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -338,6 +343,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cr6-OX-zUr"/>
+        <segue reference="bWI-yg-659"/>
     </inferredMetricsTieBreakers>
 </document>

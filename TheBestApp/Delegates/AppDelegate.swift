@@ -27,7 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.initialize(
                with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
-                configuration.applicationId = self.infoForKey("PARSE_APP_ID")
+                print(self.infoForKey("PARSE_APP_ID")!)
+                print(self.infoForKey("PARSE_API_SERVER")!)
+                
+                configuration.applicationId = self.infoForKey("PARSE_APP_ID")!
                 configuration.clientKey = self.infoForKey("PARSE_MASTER_KEY")
                 configuration.server = self.infoForKey("PARSE_API_SERVER")!
                })
