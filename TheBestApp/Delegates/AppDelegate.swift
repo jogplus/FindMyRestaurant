@@ -7,17 +7,26 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-
+    // Initialize Parse
+    // Set applicationId and server based on the values in the Heroku settings.
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        Parse.initialize(
+               with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
+                   configuration.applicationId = "thebestapp"
+                   configuration.server = "https://thebestappcodepath.herokuapp.com/parse"
+               })
+           )
+        
+      
         return true
     }
-
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
