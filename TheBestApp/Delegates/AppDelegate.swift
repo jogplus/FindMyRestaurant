@@ -11,16 +11,25 @@ import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    
+    func infoForKey(_ key: String) -> String? {
+           return (Bundle.main.infoDictionary?[key] as? String)?
+               .replacingOccurrences(of: "\\", with: "")
+    }
 
 
     // Initialize Parse
     // Set applicationId and server based on the values in the Heroku settings.
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
         Parse.initialize(
                with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
-                   configuration.applicationId = "thebestapp"
-                   configuration.server = "https://thebestappcodepath.herokuapp.com/parse"
+                configuration.applicationId = self.infoForKey("PARSE_APP_ID")
+                configuration.clientKey = self.infoForKey("PARSE_MASTER_KEY")
+                configuration.server = self.infoForKey("PARSE_API_SERVER")!
                })
            )
         
