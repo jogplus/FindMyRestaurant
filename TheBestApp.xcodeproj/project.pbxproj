@@ -15,7 +15,7 @@
 		2C29F1BA240EF68900A3B182 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C29F1B8240EF68900A3B182 /* LaunchScreen.storyboard */; };
 		2C29F1C5240EF68A00A3B182 /* TheBestAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C29F1C4240EF68A00A3B182 /* TheBestAppTests.swift */; };
 		2C29F1D0240EF68A00A3B182 /* TheBestAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C29F1CF240EF68A00A3B182 /* TheBestAppUITests.swift */; };
-		2C3D129A24116FE000470971 /* StartSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3D129924116FE000470971 /* StartSessionViewController.swift */; };
+		2C3D129E2411843C00470971 /* CreateSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3D129D2411843C00470971 /* CreateSessionViewController.swift */; };
 		79BAFBCB92C79B8DE72A8D04 /* Pods_TheBestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14417EB930AEBA629ECC5320 /* Pods_TheBestApp.framework */; };
 		D25389ECF47A8A46A6CAA338 /* Pods_TheBestAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49435FD16E939BA7EC3A932C /* Pods_TheBestAppTests.framework */; };
 		F1BA480349734E184A780115 /* Pods_TheBestApp_TheBestAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733D1148AE1B2E52FCF5DD82 /* Pods_TheBestApp_TheBestAppUITests.framework */; };
@@ -55,8 +55,8 @@
 		2C29F1CB240EF68A00A3B182 /* TheBestAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheBestAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C29F1CF240EF68A00A3B182 /* TheBestAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheBestAppUITests.swift; sourceTree = "<group>"; };
 		2C29F1D1240EF68A00A3B182 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2C3D129924116FE000470971 /* StartSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartSessionViewController.swift; sourceTree = "<group>"; };
 		2C3D129C2411795500470971 /* configs.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = configs.xcconfig; sourceTree = "<group>"; };
+		2C3D129D2411843C00470971 /* CreateSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSessionViewController.swift; sourceTree = "<group>"; };
 		468D44AE63ED537722890C51 /* Pods-TheBestAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheBestAppTests.debug.xcconfig"; path = "Target Support Files/Pods-TheBestAppTests/Pods-TheBestAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		49435FD16E939BA7EC3A932C /* Pods_TheBestAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheBestAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		702AA486879B8A6986DDF428 /* Pods-TheBestApp-TheBestAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheBestApp-TheBestAppUITests.release.xcconfig"; path = "Target Support Files/Pods-TheBestApp-TheBestAppUITests/Pods-TheBestApp-TheBestAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				2C29F1B1240EF68700A3B182 /* ViewController.swift */,
-				2C3D129924116FE000470971 /* StartSessionViewController.swift */,
+				2C3D129D2411843C00470971 /* CreateSessionViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -436,8 +436,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C3D129A24116FE000470971 /* StartSessionViewController.swift in Sources */,
 				2C29F1B2240EF68700A3B182 /* ViewController.swift in Sources */,
+				2C3D129E2411843C00470971 /* CreateSessionViewController.swift in Sources */,
 				2C29F1AE240EF68700A3B182 /* AppDelegate.swift in Sources */,
 				2C29F1B0240EF68700A3B182 /* SceneDelegate.swift in Sources */,
 			);

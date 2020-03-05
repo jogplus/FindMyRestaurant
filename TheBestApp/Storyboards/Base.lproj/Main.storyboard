@@ -10,7 +10,7 @@
         <!--Setup Session-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="StartSessionViewController" customModule="TheBestApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,7 +44,7 @@
         <!--Create Session-->
         <scene sceneID="zXS-8Q-CIP">
             <objects>
-                <viewController id="X9b-LD-1Re" sceneMemberID="viewController">
+                <viewController id="X9b-LD-1Re" customClass="CreateSessionViewController" customModule="TheBestApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="810-7A-f4e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,6 +58,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Start Session"/>
                                 <connections>
+                                    <action selector="startSession:" destination="X9b-LD-1Re" eventType="touchUpInside" id="zc1-Df-pXn"/>
                                     <segue destination="eYE-vc-BfH" kind="show" id="lAP-Xb-cZP"/>
                                 </connections>
                             </button>

@@ -1,5 +1,5 @@
 //
-//  StartSessionViewController.swift
+//  CreateSessionViewController.swift
 //  TheBestApp
 //
 //  Created by Zachary Pinto on 3/5/20.
@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Parse
 
-class StartSessionViewController: UIViewController {
+class CreateSessionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +17,9 @@ class StartSessionViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func startSession(_ sender: Any) {
+    }
+    
     /*
     // MARK: - Navigation
 
