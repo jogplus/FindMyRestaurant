@@ -1,0 +1,103 @@
+{
+	"info": {
+		"_postman_id": "bbb403c1-585d-4e6c-9836-a565b83b71f8",
+		"name": "FindMyRestaurant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://api.yelp.com/v3/categories",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "WFvjr_ky_VpN9xFiATyW5YZUTPNTkGfwk0ngT52CYTRl13vr_xRaKcxh7NRncmw_q6U19TyhsBO4NFuEJjimVG0rfuXEOMjWch8YHmknMtPR5q32N1Y_J0zxMVphXnYx",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.yelp.com/v3/businesses/search?term=restaurants&location=Irvine",
+					"protocol": "https",
+					"host": [
+						"api",
+						"yelp",
+						"com"
+					],
+					"path": [
+						"v3",
+						"businesses",
+						"search"
+					],
+					"query": [
+						{
+							"key": "term",
+							"value": "restaurants"
+						},
+						{
+							"key": "location",
+							"value": "Irvine"
+						}
+					]
+				},
+				"description": "https://www.yelp.com/developers/documentation/v3/category"
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.yelp.com/v3/businesses/search?term=restaurants&location=Irvine",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "WFvjr_ky_VpN9xFiATyW5YZUTPNTkGfwk0ngT52CYTRl13vr_xRaKcxh7NRncmw_q6U19TyhsBO4NFuEJjimVG0rfuXEOMjWch8YHmknMtPR5q32N1Y_J0zxMVphXnYx",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://api.yelp.com/v3/businesses/search?term=restaurants&location=Irvine",
+					"protocol": "https",
+					"host": [
+						"api",
+						"yelp",
+						"com"
+					],
+					"path": [
+						"v3",
+						"businesses",
+						"search"
+					],
+					"query": [
+						{
+							"key": "term",
+							"value": "restaurants"
+						},
+						{
+							"key": "location",
+							"value": "Irvine"
+						}
+					]
+				},
+				"description": "https://www.yelp.com/developers/documentation/v3/business_search"
+			},
+			"response": []
+		}
+	]
+}

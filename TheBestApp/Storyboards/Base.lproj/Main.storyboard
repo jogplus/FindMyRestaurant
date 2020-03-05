@@ -58,8 +58,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Start Session"/>
                                 <connections>
-                                    <action selector="startSession:" destination="X9b-LD-1Re" eventType="touchUpInside" id="zc1-Df-pXn"/>
-                                    <segue destination="eYE-vc-BfH" kind="show" id="lAP-Xb-cZP"/>
+                                    <action selector="startSession:" destination="X9b-LD-1Re" eventType="touchUpInside" id="cSH-ou-4ua"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -67,6 +66,9 @@
                         <viewLayoutGuide key="safeArea" id="qS0-FK-NhA"/>
                     </view>
                     <navigationItem key="navigationItem" title="Create Session" id="JJz-Mh-XAw"/>
+                    <connections>
+                        <segue destination="eYE-vc-BfH" kind="show" identifier="sessionHostSegue" id="pJJ-he-t0c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dw9-Xi-hDy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -75,7 +77,7 @@
         <!--Session Info-->
         <scene sceneID="kax-i0-RU7">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="eYE-vc-BfH" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="eYE-vc-BfH" customClass="InfoSessionViewController" customModule="TheBestApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="64d-yi-STD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,7 +89,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGQ-Gk-Lp0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGQ-Gk-Lp0">
                                 <rect key="frame" x="162" y="76" width="50" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -121,6 +123,10 @@
                         <viewLayoutGuide key="safeArea" id="DqP-ss-RmY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Session Info" id="IPp-Wz-oky"/>
+                    <connections>
+                        <outlet property="sessionCodeLabel" destination="c8s-MG-jPM" id="Rei-go-n0c"/>
+                        <outlet property="sessionCountLabel" destination="CGQ-Gk-Lp0" id="mN7-zP-ISw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UyM-y3-qGH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
