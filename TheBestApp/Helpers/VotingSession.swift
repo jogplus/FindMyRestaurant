@@ -50,5 +50,9 @@ class VotingSession {
         session.fetchInBackground()
         return session["userCount"] as! NSNumber
     }
+    
+    static func getSessionId() -> String {
+        return PFUser.current()!.username!
+    }
 }
 

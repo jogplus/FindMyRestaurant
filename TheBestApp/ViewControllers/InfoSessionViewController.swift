@@ -18,17 +18,13 @@ class InfoSessionViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let currentUser = PFUser.current()!
-        sessionCodeLabel.text = currentUser.username
+        sessionCodeLabel.text = VotingSession.getSessionId()
         
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateUserCount), userInfo: nil, repeats: true)
     }
     
     @objc func updateUserCount() {
-        let currentUser = PFUser.current()!
-        currentUser.fetchInBackground()
-        let userCount = currentUser["userCount"] as! NSNumber
-        sessionCountLabel.text = String(format: "%@", userCount)
+        sessionCountLabel.text = String(format: "%@", VotingSession.getUserCount())
     }
     
 
