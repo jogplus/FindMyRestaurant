@@ -18,17 +18,12 @@ class CreateSessionViewController: UIViewController {
     }
     
     @IBAction func startSession(_ sender: Any) {
-        let code = Int.random(in: 10000 ..< 99999)
-        var user = PFUser()
-        user.username = String(code)
-        user.password = String(code)
-        user["userCount"] = 1
-        user.signUpInBackground { (success, error) in
+        VotingSession.createSession { (success, error) in
             if success {
                 self.performSegue(withIdentifier: "sessionHostSegue", sender: nil)
             }
             else {
-                print("Error: \(error?.localizedDescription)")
+                print("Error: \(error?.localizedDescription ?? "bad news")")
             }
         }
     }

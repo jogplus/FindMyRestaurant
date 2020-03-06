@@ -322,6 +322,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Waiting To Start" id="tp4-As-7YE"/>
                     <connections>
+                        <outlet property="sessionCountLabel" destination="C7e-HS-Zwc" id="WcE-Ry-BEj"/>
                         <segue destination="wrY-Ii-Tku" kind="presentation" id="bWI-yg-659"/>
                     </connections>
                 </viewController>

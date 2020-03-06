@@ -25,7 +25,7 @@ class JoinSessionViewController: UIViewController {
     
     @IBAction func joinSession(_ sender: Any) {
         let sessionId = sessionIDTextField.text!
-        PFUser.logInWithUsername(inBackground: sessionId, password: sessionId) { (session, error) in
+        VotingSession.joinSession(sessionId: sessionId, closure: { (session, error) in
             if session != nil {
                 self.performSegue(withIdentifier: "sessionJoinSeg", sender: nil)
                 print("we were successful")
@@ -33,7 +33,7 @@ class JoinSessionViewController: UIViewController {
                 self.validSessionLabel.isHidden = false
                 print("this is bad")
             }
-        }
+        }) 
     }
     
     /*

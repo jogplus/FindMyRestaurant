@@ -11,19 +11,21 @@ import Parse
 
 class JoinerLobbyViewController: UIViewController {
 
+    
+    @IBOutlet weak var sessionCountLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let session = PFUser.current()
-        let userCount = Int(truncating: session!["userCount"] as! NSNumber) + 1
-        PFUser.current()!.setObject(userCount, forKey: "userCount")
-        PFUser.current()!.saveInBackground { (success, error) in
+        VotingSession.incrementUserCount{ (success, error) in
             if success {
                 print("we were successful")
             } else {
                 print("this is bad")
             }
         }
+        
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateUserCount), userInfo: nil, repeats: true)
         
         // Do any additional setup after loading the view.
     }
@@ -32,11 +34,7 @@ class JoinerLobbyViewController: UIViewController {
         super.viewWillDisappear(animated)
 
         if self.isMovingFromParent {
-            
-            let session = PFUser.current()
-            let userCount = Int(truncating: session!["userCount"] as! NSNumber) - 1
-            PFUser.current()!.setObject(userCount, forKey: "userCount")
-            PFUser.current()!.saveInBackground { (success, error) in
+            VotingSession.decrementUserCount{ (success, error) in
                 if success {
                     print("we were successful")
                 } else {
@@ -44,6 +42,10 @@ class JoinerLobbyViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    @objc func updateUserCount() {
+        sessionCountLabel.text = String(format: "%@", VotingSession.getUserCount())
     }
     
     /*
