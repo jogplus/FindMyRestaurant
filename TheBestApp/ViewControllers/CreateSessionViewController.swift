@@ -37,6 +37,17 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate {
         
     }
     
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let overlay = overlay as? MKCircle {
+            let circleRenderer = MKCircleRenderer(circle: overlay)
+            circleRenderer.fillColor =  UIColor.init(red: 0.0, green: 0, blue: 1, alpha: 0.5)
+            return circleRenderer
+        }
+        else {
+           return MKOverlayRenderer(overlay: overlay)
+        }
+    }
+    
     func showCircle(coordinate: CLLocationCoordinate2D, radius: CLLocationDistance) {
         let circle = MKCircle(center: coordinate, radius: radius)
         mapView.addOverlay(circle)
@@ -53,23 +64,6 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate {
         let region = MKCoordinateRegion(center: mapCenter, span: mapSpan)
         
         self.mapView.setRegion(region, animated: true)
-    }
-    
-    /* ----- TODO: Customize mapview to add custom map notations */
-    internal func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let reuseID = "annotation"
-        
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID)
-        
-        if (annotationView == nil) {
-            // if there is nothing in the vie , the create the view
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
-            // when you tap, it gives a pop up
-            annotationView!.canShowCallout = true
-            annotationView!.leftCalloutAccessoryView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        }
-        
-        return annotationView
     }
     
     @IBAction func startSession(_ sender: Any) {
