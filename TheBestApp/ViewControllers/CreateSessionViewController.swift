@@ -8,13 +8,68 @@
 
 import UIKit
 import Parse
+import MapKit
 
-class CreateSessionViewController: UIViewController {
+class CreateSessionViewController: UIViewController, MKMapViewDelegate {
 
+    @IBOutlet weak var mapView: MKMapView!
+    fileprivate let locationManager: CLLocationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        navigationController?.navigationBar.isHidden = true
+        // set intitial location
+        mapView.delegate = self
+        
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.distanceFilter = kCLDistanceFilterNone
+        self.locationManager.startUpdatingLocation()
+        
+        self.mapView.showsUserLocation = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.setInitialLocation()
+            self.showCircle(coordinate: self.locationManager.location!.coordinate, radius: 1000);
+        }
+        
+        
+    }
+    
+    func showCircle(coordinate: CLLocationCoordinate2D, radius: CLLocationDistance) {
+        let circle = MKCircle(center: coordinate, radius: radius)
+        mapView.addOverlay(circle)
+    }
+    
+    func setInitialLocation() {
+        // UCI latitude and longitude
+        let mapCenter = locationManager.location!.coordinate
+        
+        // create the span of the map - radius
+        // Note: One degree of latitude is approx 111km (69 miles)
+        let mapSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta:  0.1)
+        
+        let region = MKCoordinateRegion(center: mapCenter, span: mapSpan)
+        
+        self.mapView.setRegion(region, animated: true)
+    }
+    
+    /* ----- TODO: Customize mapview to add custom map notations */
+    internal func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let reuseID = "annotation"
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID)
+        
+        if (annotationView == nil) {
+            // if there is nothing in the vie , the create the view
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
+            // when you tap, it gives a pop up
+            annotationView!.canShowCallout = true
+            annotationView!.leftCalloutAccessoryView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        }
+        
+        return annotationView
     }
     
     @IBAction func startSession(_ sender: Any) {

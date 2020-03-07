@@ -10,20 +10,25 @@ import Foundation
 import Parse
 
 class VotingSession {
+    static var sessionCreater: Bool = false
+    
     static func createSession(closure: @escaping (Bool, Error?) -> Void){
         let code = Int.random(in: 10000 ..< 99999)
         let session = PFUser()
         session.username = String(code)
         session.password = String(code)
         session["userCount"] = 1
-        session.signUpInBackground {(succes, error) in
-            closure(succes, error)
+        session.signUpInBackground {(success, error) in
+            if success {
+                VotingSession.sessionCreater = true
+            }
+            closure(success, error)
         }
     }
     
     static func joinSession(sessionId: String, closure: @escaping (PFUser?, Error?) -> Void) {
-        PFUser.logInWithUsername(inBackground: sessionId, password: sessionId) {(succes, error) in
-            closure(succes, error)
+        PFUser.logInWithUsername(inBackground: sessionId, password: sessionId) {(success, error) in
+            closure(success, error)
         }
     }
     
@@ -31,8 +36,8 @@ class VotingSession {
         let session = PFUser.current()!
         let userCount = Int(truncating: session["userCount"] as! NSNumber) + 1
         PFUser.current()!.setObject(userCount, forKey: "userCount")
-        PFUser.current()!.saveInBackground {(succes, error) in
-            closure(succes, error)
+        PFUser.current()!.saveInBackground {(success, error) in
+            closure(success, error)
         }
     }
     
@@ -40,8 +45,8 @@ class VotingSession {
         let session = PFUser.current()!
         let userCount = Int(truncating: session["userCount"] as! NSNumber) - 1
         PFUser.current()!.setObject(userCount, forKey: "userCount")
-        PFUser.current()!.saveInBackground {(succes, error) in
-            closure(succes, error)
+        PFUser.current()!.saveInBackground {(success, error) in
+            closure(success, error)
         }
     }
     
@@ -53,6 +58,14 @@ class VotingSession {
     
     static func getSessionId() -> String {
         return PFUser.current()!.username!
+    }
+    
+    static func sendVote() {
+        return
+    }
+    
+    static func selectWinner() {
+        return
     }
 }
 

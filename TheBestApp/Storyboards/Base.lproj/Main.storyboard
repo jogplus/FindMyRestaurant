@@ -67,6 +67,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Create Session" id="JJz-Mh-XAw"/>
                     <connections>
+                        <outlet property="mapView" destination="gCd-Rk-Arn" id="AoR-Xj-ptB"/>
                         <segue destination="eYE-vc-BfH" kind="show" identifier="sessionHostSegue" id="pJJ-he-t0c"/>
                     </connections>
                 </viewController>
