@@ -13,6 +13,7 @@ import MapKit
 class CreateSessionViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    var radiusCircle: MKOverlay!
     fileprivate let locationManager: CLLocationManager = CLLocationManager()
     
     override func viewDidLoad() {
@@ -31,10 +32,12 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.setInitialLocation()
-            self.showCircle(coordinate: self.locationManager.location!.coordinate, radius: 1000);
+            self.showCircle();
         }
-        
-        
+    }
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        showCircle()
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -48,9 +51,23 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func showCircle(coordinate: CLLocationCoordinate2D, radius: CLLocationDistance) {
-        let circle = MKCircle(center: coordinate, radius: radius)
-        mapView.addOverlay(circle)
+    func topCenterCoordinate() -> CLLocationCoordinate2D {
+        return self.mapView.convert(CGPoint(x: self.mapView.frame.size.width / 2.0, y: 0), toCoordinateFrom: self.mapView)
+    }
+
+    func currentRadius() -> Double {
+        let centerLocation = CLLocation(latitude: self.mapView.centerCoordinate.latitude, longitude: self.mapView.centerCoordinate.longitude)
+        let topCenterCoordinate = self.topCenterCoordinate()
+        let topCenterLocation = CLLocation(latitude: topCenterCoordinate.latitude, longitude: topCenterCoordinate.longitude)
+        return centerLocation.distance(from: topCenterLocation)
+    }
+    
+    func showCircle() {
+        if radiusCircle != nil {
+            mapView.removeOverlay(radiusCircle)
+        }
+        radiusCircle = MKCircle(center: self.locationManager.location!.coordinate, radius: currentRadius() / 2)
+        mapView.addOverlay(radiusCircle)
     }
     
     func setInitialLocation() {
