@@ -62,7 +62,7 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let overlay = overlay as? MKCircle {
             let circleRenderer = MKCircleRenderer(circle: overlay)
-            circleRenderer.fillColor =  UIColor.init(red: 0.0, green: 0, blue: 1, alpha: 0.5)
+            circleRenderer.fillColor = UIColor.blue.withAlphaComponent(0.20)
             return circleRenderer
         }
         else {

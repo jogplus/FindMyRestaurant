@@ -194,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				2C3D12A82411C50200470971 /* VotingSession.swift */,
+				2C3D12AA24146F1E00470971 /* SquareClient.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -471,6 +472,7 @@
 				6AA7BF8F24119E5000BAFAB7 /* InfoSessionViewController.swift in Sources */,
 				2C29F1B0240EF68700A3B182 /* SceneDelegate.swift in Sources */,
 				2C3D12A92411C50200470971 /* VotingSession.swift in Sources */,
+				2C3D12AB24146F1E00470971 /* SquareClient.swift in Sources */,
 				2C3D12A024118DDD00470971 /* JoinSessionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
