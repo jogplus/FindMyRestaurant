@@ -8,10 +8,20 @@
 
 import UIKit
 
+
 class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let gradient = CAGradientLayer()
+//
+//        gradient.frame = self.view.bounds
+//        let firstColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1)
+//        let secondColor = UIColor(red: 0.87, green: 0.87, blue: 0.87, alpha: 1)
+//        gradient.colors = [firstColor.cgColor, secondColor.cgColor]
+//
+//        self.view.layer.insertSublayer(gradient, at: 0)
+        
         // Do any additional setup after loading the view.
     }
 
