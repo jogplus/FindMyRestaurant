@@ -1,4 +1,4 @@
-# Uncomment the next line to define a global platform for your project
+#Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
 target 'TheBestApp' do
@@ -9,8 +9,6 @@ target 'TheBestApp' do
   # Pods for TheBestApp
   pod 'Parse'
   pod 'AlamofireImage'
-  pod 'CDYelpFusionKit', '1.5.1'
-  pod "YelpAPI"
 
   target 'TheBestAppTests' do
     inherit! :search_paths
