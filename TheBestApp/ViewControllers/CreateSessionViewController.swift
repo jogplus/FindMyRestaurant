@@ -19,7 +19,6 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.isHidden = true
         // set intitial location
         mapView.delegate = self
         
@@ -34,6 +33,14 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate {
             self.setInitialLocation()
             self.showCircle();
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.view.backgroundColor = .clear
+        navigationController?.navigationBar.isTranslucent = true
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {

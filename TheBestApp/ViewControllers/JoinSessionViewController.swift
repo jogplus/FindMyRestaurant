@@ -19,9 +19,13 @@ class JoinSessionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         validSessionLabel.isHidden = true
-
         // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
+    
     
     @IBAction func joinSession(_ sender: Any) {
         let sessionId = sessionIDTextField.text!
