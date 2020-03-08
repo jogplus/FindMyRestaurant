@@ -13,13 +13,14 @@ import MapKit
 class CreateSessionViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var priceSegment: UISegmentedControl!
+    
     var radiusCircle: MKOverlay!
     fileprivate let locationManager: CLLocationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.isHidden = true
         // set intitial location
         mapView.delegate = self
         
@@ -34,6 +35,14 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate {
             self.setInitialLocation()
             self.showCircle();
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.view.backgroundColor = .clear
+        navigationController?.navigationBar.isTranslucent = true
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
@@ -84,6 +93,7 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func startSession(_ sender: Any) {
+        VotingSession.price = priceSegment.selectedSegmentIndex
         VotingSession.createSession { (success, error) in
             if success {
                 self.performSegue(withIdentifier: "sessionHostSegue", sender: nil)

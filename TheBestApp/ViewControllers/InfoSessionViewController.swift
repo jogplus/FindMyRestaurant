@@ -14,18 +14,22 @@ class InfoSessionViewController: UIViewController {
     @IBOutlet weak var sessionCodeLabel: UILabel!
     @IBOutlet weak var sessionCountLabel: UILabel!
     
+    var timer : Timer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         sessionCodeLabel.text = VotingSession.getSessionId()
         
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateUserCount), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateUserCount), userInfo: nil, repeats: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
+        
+        timer?.invalidate()
+        
         if self.isMovingFromParent {
             VotingSession.decrementUserCount{ (success, error) in
                 if success {
