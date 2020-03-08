@@ -10,30 +10,40 @@ import UIKit
 import Parse
 import MapKit
 
-class CreateSessionViewController: UIViewController, MKMapViewDelegate {
+class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var priceSegment: UISegmentedControl!
     
     var radiusCircle: MKOverlay!
-    fileprivate let locationManager: CLLocationManager = CLLocationManager()
+//    fileprivate let locationManager: CLLocationManager = CLLocationManager()
+    var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // set intitial location
         mapView.delegate = self
-        
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.distanceFilter = kCLDistanceFilterNone
-        self.locationManager.startUpdatingLocation()
+        locationManager.delegate = self
         
         self.mapView.showsUserLocation = true
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            self.setInitialLocation()
-            self.showCircle();
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .authorizedWhenInUse, .authorizedAlways:
+            locationManager.startUpdatingLocation()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                self.setInitialLocation()
+            }
+        case .denied:
+            print("I'm sorry - I can't show location. User has not authorized it")
+        case .restricted:
+            print("Access denied - likely parental controls are restricting use in this app.")
+        default:
+            break
         }
     }
     
@@ -68,7 +78,10 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate {
         let centerLocation = CLLocation(latitude: self.mapView.centerCoordinate.latitude, longitude: self.mapView.centerCoordinate.longitude)
         let topCenterCoordinate = self.topCenterCoordinate()
         let topCenterLocation = CLLocation(latitude: topCenterCoordinate.latitude, longitude: topCenterCoordinate.longitude)
-        return centerLocation.distance(from: topCenterLocation)
+        VotingSession.location = topCenterLocation
+        let radius = centerLocation.distance(from: topCenterLocation)
+        VotingSession.radius = radius
+        return radius
     }
     
     func showCircle() {

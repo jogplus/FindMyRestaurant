@@ -12,6 +12,8 @@ import Parse
 class VotingSession {
     static var sessionCreater: Bool = false
     static var price: Int = -1
+    static var radius: CLLocationDistance = 0
+    static var location: CLLocation = CLLocation()
     
     static func createSession(closure: @escaping (Bool, Error?) -> Void){
         let code = Int.random(in: 10000 ..< 99999)
