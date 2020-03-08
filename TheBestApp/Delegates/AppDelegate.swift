@@ -36,10 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         SquareClient.initialize(clientId: self.infoForKey("CLIENT_ID")!, clientSecret: self.infoForKey("CLIENT_SECRET")!)
         
-        SquareClient.fetchCategories {(categories) in
-            print(categories)
-        }
-        
         return true
     }
     // MARK: UISceneSession Lifecycle

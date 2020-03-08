@@ -8,6 +8,7 @@
 
 import Foundation
 import Parse
+import MapKit
 
 class VotingSession {
     static var sessionCreater: Bool = false

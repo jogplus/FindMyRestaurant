@@ -1,5 +1,5 @@
 //
-//  YelpClient.swift
+//  SquareClient.swift
 //  TheBestApp
 //
 //  Created by Zachary Pinto on 3/7/20.
@@ -7,25 +7,28 @@
 //
 
 import Foundation
+import MapKit
 
 class SquareClient {
     static var CLIENT_ID = ""
     static var CLIENT_SECRET = ""
     
-    static var curLat:Double = 0
-    static var curLong:Double = 0
-    static var Radius:Double = 0
+    static var AUTH_QUERY_STRING = ""
+    static let BASE_URL = "https://api.foursquare.com/v2/venues"
+    static let SEARCH_ENDPOINT = "\(SquareClient.BASE_URL)/search?"
     
     static func initialize(clientId: String, clientSecret: String) {
         SquareClient.CLIENT_ID = clientId
         SquareClient.CLIENT_SECRET = clientSecret
+        
+        SquareClient.AUTH_QUERY_STRING = "client_id=\(SquareClient.CLIENT_ID)&client_secret=\(SquareClient.CLIENT_SECRET)&v=20141020&"
     }
     
-    static func fetchCategories(closure: @escaping (NSArray) -> Void) {
-        let baseUrlString = "https://api.foursquare.com/v2/venues/search?"
-        let queryString = "client_id=\(SquareClient.CLIENT_ID)&client_secret=\(SquareClient.CLIENT_SECRET)&v=20141020&near=Irvine,CA&query=restaurant"
+    static func fetchCategories(location: CLLocation, radius: CLLocationDistance, closure: @escaping (NSArray) -> Void) {
+        let queryParams = SquareClient.AUTH_QUERY_STRING +  "ll=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=\(Int(radius))&query=restaurant"
 
-        let url = URL(string: baseUrlString + queryString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
+        let url = URL(string: SquareClient.SEARCH_ENDPOINT + queryParams.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
+       
         let request = URLRequest(url: url)
 
         let session = URLSession(
@@ -39,7 +42,7 @@ class SquareClient {
                 if let data = dataOrNil {
                     if let responseDictionary = try! JSONSerialization.jsonObject(
                         with: data, options:[]) as? NSDictionary {
-                            NSLog("response: \(responseDictionary)")
+//                            NSLog("response: \(responseDictionary)")
                         let restaurants = responseDictionary.value(forKeyPath: "response.venues") as! NSArray
                         
                         var categoriesSet : Dictionary = Dictionary<String, Any>()
@@ -65,41 +68,62 @@ class SquareClient {
         task.resume()
     }
     
-//    static func fetchRestaurants() {
-//        let baseUrlString = "https://api.foursquare.com/v2/venues/search?"
-//        let queryString = "client_id=\(SquareClient.CLIENT_ID)&client_secret=\(SquareClient.CLIENT_SECRET)&v=20141020&near=Irvine,CA&query=restaurant"
-//
-//        let url = URL(string: baseUrlString + queryString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
-//        let request = URLRequest(url: url)
-//
-//        let session = URLSession(
-//            configuration: URLSessionConfiguration.default,
-//            delegate:nil,
-//            delegateQueue:OperationQueue.main
-//        )
-//
-//        let task : URLSessionDataTask = session.dataTask(with: request,
-//            completionHandler: { (dataOrNil, response, error) in
-//                if let data = dataOrNil {
-//                    if let responseDictionary = try! JSONSerialization.jsonObject(
-//                        with: data, options:[]) as? NSDictionary {
-//                            NSLog("response: \(responseDictionary)")
-//                        let restaurants = responseDictionary.value(forKeyPath: "response.venues") as! NSArray
-//
-//                        var categoriesSet = Set<String>()
-//                        for restaurant in restaurants as! [NSDictionary] {
-//
-//                            let categories = restaurant.value(forKeyPath: "categories")
-//
-//                            for category in categories as! [NSDictionary] {
-//                                categoriesSet.insert(category.value(forKeyPath: "name") as! String)
-//                            }
-//                        }
-//                    }
-//                }
-//        });
-//        task.resume()
-//    }
+    static func fetchRestaurants(location: CLLocation, radius: CLLocationDistance, categories: NSArray, closure: @escaping (NSArray) -> Void) {
+        
+        var queryParams = SquareClient.AUTH_QUERY_STRING +  "ll=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=\(Int(radius))&categoryId="
+        
+        for category in categories {
+            queryParams += category as! String + ","
+        }
+
+        let url = URL(string: SquareClient.SEARCH_ENDPOINT + queryParams.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
+        
+        print(url)
+        
+        let request = URLRequest(url: url)
+
+        let session = URLSession(
+            configuration: URLSessionConfiguration.default,
+            delegate:nil,
+            delegateQueue:OperationQueue.main
+        )
+        
+        let task : URLSessionDataTask = session.dataTask(with: request,
+            completionHandler: { (dataOrNil, response, error) in
+                if let data = dataOrNil {
+                    if let responseDictionary = try! JSONSerialization.jsonObject(
+                        with: data, options:[]) as? NSDictionary {
+                        let restaurants = responseDictionary.value(forKeyPath: "response.venues") as! NSArray
+                        closure(restaurants as NSArray)
+                    }
+                }
+        });
+        task.resume()
+    }
     
     
+    static func fetchRestaurantInfo(restaurantId: String, closure: @escaping (NSDictionary) -> Void) {
+        
+        let url = URL(string: SquareClient.BASE_URL + "/\(restaurantId)?" + SquareClient.AUTH_QUERY_STRING.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
+        
+        let request = URLRequest(url: url)
+
+        let session = URLSession(
+            configuration: URLSessionConfiguration.default,
+            delegate:nil,
+            delegateQueue:OperationQueue.main
+        )
+        
+        let task : URLSessionDataTask = session.dataTask(with: request,
+            completionHandler: { (dataOrNil, response, error) in
+                if let data = dataOrNil {
+                    if let responseDictionary = try! JSONSerialization.jsonObject(
+                        with: data, options:[]) as? NSDictionary {
+                        let restaurant = responseDictionary.value(forKeyPath: "response.venue") as! NSDictionary
+                        closure(restaurant)
+                    }
+                }
+        });
+        task.resume()
+    }
 }
