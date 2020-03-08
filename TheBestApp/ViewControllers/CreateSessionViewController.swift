@@ -78,7 +78,10 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
         let centerLocation = CLLocation(latitude: self.mapView.centerCoordinate.latitude, longitude: self.mapView.centerCoordinate.longitude)
         let topCenterCoordinate = self.topCenterCoordinate()
         let topCenterLocation = CLLocation(latitude: topCenterCoordinate.latitude, longitude: topCenterCoordinate.longitude)
-        return centerLocation.distance(from: topCenterLocation)
+        VotingSession.location = topCenterLocation
+        let radius = centerLocation.distance(from: topCenterLocation)
+        VotingSession.radius = radius
+        return radius
     }
     
     func showCircle() {
