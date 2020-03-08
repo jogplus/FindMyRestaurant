@@ -197,12 +197,12 @@
                                 <rect key="frame" x="54" y="135" width="267" height="317"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <mutableString key="text">This is not a legally binding contract between all parties involved in picking a restaurant.  
+                                <string key="text">This is not a legally binding contract between all parties involved in picking a restaurant.  
 This contract ensures that no party may say "I don't want that" or "I'm not hungry anymore".
 
 All party members agree that after submitting their single veto they will go to the restaurant selected by the "Find My Restaurant App" (trademark pending).
 
-As a result, all party members must smile and be grateful once the app makes the decision they were able to make themselves.</mutableString>
+As a result, all party members must smile and be grateful once the app makes the decision they were able to make themselves.</string>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
