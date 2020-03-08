@@ -27,8 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.initialize(
                with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
-                print(self.infoForKey("PARSE_APP_ID")!)
-                print(self.infoForKey("PARSE_API_SERVER")!)
                 
                 configuration.applicationId = self.infoForKey("PARSE_APP_ID")!
                 configuration.clientKey = self.infoForKey("PARSE_MASTER_KEY")
@@ -36,7 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                })
            )
         
-        SquareClient.fetchCategories()
+        SquareClient.initialize(clientId: self.infoForKey("CLIENT_ID")!, clientSecret: self.infoForKey("CLIENT_SECRET")!)
+        
+        SquareClient.fetchCategories {(categories) in
+            print(categories)
+        }
         
         return true
     }
