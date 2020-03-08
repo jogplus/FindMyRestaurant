@@ -8,7 +8,8 @@ target 'TheBestApp' do
   # Pods for TheBestApp
   pod 'Parse'
   pod 'AlamofireImage'
-
+  pod 'CDYelpFusionKit', '1.5.1'
+  pod "YelpAPI"
 
   target 'TheBestAppTests' do
     inherit! :search_paths

@@ -36,7 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                })
            )
         
-      
+        SquareClient.fetchCategories()
+        
         return true
     }
     // MARK: UISceneSession Lifecycle

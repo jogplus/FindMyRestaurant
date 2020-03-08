@@ -10,6 +10,8 @@
 	<string>$(PARSE_API_SERVER)</string>
 	<key>PARSE_MASTER_KEY</key>
 	<string>$(PARSE_MASTER_KEY)</string>
+	<key>CLIENT_SECRET</key>
+	<string>$(CLIENT_SECRET)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
