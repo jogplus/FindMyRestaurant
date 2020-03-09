@@ -15,6 +15,13 @@ class JoinSessionViewController: UIViewController {
     @IBOutlet weak var sessionIDTextField: UITextField!
     @IBOutlet weak var validSessionLabel: UILabel!
     
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true)
+    }
+
+    @IBAction func onType(_ sender: Any) {
+        validSessionLabel.isHidden = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
