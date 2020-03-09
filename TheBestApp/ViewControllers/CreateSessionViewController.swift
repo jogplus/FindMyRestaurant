@@ -16,6 +16,8 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
     @IBOutlet weak var priceSegment: UISegmentedControl!
     @IBOutlet weak var createSessionButton: UIButton!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
+    @IBOutlet weak var overlayView: UIView!
+    @IBOutlet weak var instructionLabel: UILabel!
     
     var radiusCircle: MKOverlay!
 //    fileprivate let locationManager: CLLocationManager = CLLocationManager()
@@ -27,9 +29,26 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
         priceSegment.isHidden = true
         createSessionButton.isHidden = true
         
+//        overlayView.clipsToBounds = true
+        overlayView.layer.cornerRadius = 10
+        overlayView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner] // Top right corner, Top left corner respectively
+        overlayView.layer.shadowColor = UIColor.black.cgColor
+        overlayView.layer.shadowOpacity = 0.5
+        overlayView.layer.shadowOffset = .zero
+        overlayView.layer.shadowRadius = 5
+        overlayView.layer.shouldRasterize = true
+        overlayView.layer.rasterizationScale = UIScreen.main.scale
+        
         // set intitial location
         mapView.delegate = self
         locationManager.delegate = self
+        
+        navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.view.backgroundColor = .clear
+        navigationController?.navigationBar.isTranslucent = true
         
         self.mapView.showsUserLocation = true
     }
@@ -52,16 +71,9 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.view.backgroundColor = .clear
-        navigationController?.navigationBar.isTranslucent = true
-    }
-    
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         showCircle()
+        instructionLabel.text = "Setup the search radius and price range:"
         loadingView.isHidden = true
         priceSegment.isHidden = false
         createSessionButton.isHidden = false
@@ -96,7 +108,7 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
         if radiusCircle != nil {
             mapView.removeOverlay(radiusCircle)
         }
-        radiusCircle = MKCircle(center: self.locationManager.location!.coordinate, radius: currentRadius() / 2)
+        radiusCircle = MKCircle(center: self.locationManager.location!.coordinate, radius: currentRadius() / 2.5)
         mapView.addOverlay(radiusCircle)
     }
     

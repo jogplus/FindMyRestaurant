@@ -23,10 +23,13 @@ class HomeViewController: UIViewController {
 //        self.view.layer.insertSublayer(gradient, at: 0)
         
         // Do any additional setup after loading the view.
+//        self.view.backgroundColor = .systemGray6
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
+//        navigationController?.navigationBar.isHidden = true
+//        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
 }

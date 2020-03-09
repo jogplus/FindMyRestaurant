@@ -26,6 +26,7 @@ class JoinSessionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         validSessionLabel.isHidden = true
+        navigationItem.largeTitleDisplayMode = .never
         // Do any additional setup after loading the view.
     }
     
