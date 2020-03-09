@@ -14,6 +14,8 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var priceSegment: UISegmentedControl!
+    @IBOutlet weak var createSessionButton: UIButton!
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     
     var radiusCircle: MKOverlay!
 //    fileprivate let locationManager: CLLocationManager = CLLocationManager()
@@ -21,6 +23,9 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        priceSegment.isHidden = true
+        createSessionButton.isHidden = true
         
         // set intitial location
         mapView.delegate = self
@@ -57,6 +62,9 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         showCircle()
+        loadingView.isHidden = true
+        priceSegment.isHidden = false
+        createSessionButton.isHidden = false
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
