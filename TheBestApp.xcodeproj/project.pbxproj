@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E9D868FF502DB2673D96439 /* libPods-TheBestAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F310AF0EE6BEA8B72869406 /* libPods-TheBestAppTests.a */; };
-		1BD9E4DB24158C0800FD3D62 /* CategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD9E4DA24158C0800FD3D62 /* CategoriesTableViewController.swift */; };
+		142CA3101C86A518101097DA /* libPods-TheBestApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D44F0F1F5CB2AFDC7EE7060D /* libPods-TheBestApp.a */; };
 		1BD9E4DD24158CD000FD3D62 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD9E4DC24158CD000FD3D62 /* CategoryCell.swift */; };
 		2C29F1AE240EF68700A3B182 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C29F1AD240EF68700A3B182 /* AppDelegate.swift */; };
 		2C29F1B0240EF68700A3B182 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C29F1AF240EF68700A3B182 /* SceneDelegate.swift */; };
@@ -23,8 +23,9 @@
 		2C3D12A22411A1C500470971 /* JoinerLobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3D12A12411A1C500470971 /* JoinerLobbyViewController.swift */; };
 		2C3D12A92411C50200470971 /* VotingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3D12A82411C50200470971 /* VotingSession.swift */; };
 		2C3D12AF2414B56B00470971 /* SquareClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3D12AE2414B56B00470971 /* SquareClient.swift */; };
+		2C3D12B224160EEE00470971 /* CategoryCellDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3D12B124160EEE00470971 /* CategoryCellDesignView.swift */; };
+		2C3D12B624162C4300470971 /* CategoryVotingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3D12B524162C4300470971 /* CategoryVotingViewController.swift */; };
 		6AA7BF8F24119E5000BAFAB7 /* InfoSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA7BF8E24119E5000BAFAB7 /* InfoSessionViewController.swift */; };
-		9D4B49A6C90A612432E986E1 /* libPods-TheBestApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D44F0F1F5CB2AFDC7EE7060D /* libPods-TheBestApp.a */; };
 		CF78586993CED877BC195889 /* libPods-TheBestApp-TheBestAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13878D3EC9A5052A88DB85BA /* libPods-TheBestApp-TheBestAppUITests.a */; };
 /* End PBXBuildFile section */
 
@@ -47,12 +48,8 @@
 
 /* Begin PBXFileReference section */
 		13878D3EC9A5052A88DB85BA /* libPods-TheBestApp-TheBestAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TheBestApp-TheBestAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		22C26D632134D6545F3FB21B /* Pods-TheBestApp-TheBestAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheBestApp-TheBestAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-TheBestApp-TheBestAppUITests/Pods-TheBestApp-TheBestAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		0D64316C9166AE106A9C2FC5 /* Pods-TheBestAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheBestAppTests.release.xcconfig"; path = "Target Support Files/Pods-TheBestAppTests/Pods-TheBestAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		1945C909B69F063EA79F0E4F /* Pods-TheBestApp-TheBestAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheBestApp-TheBestAppUITests.release.xcconfig"; path = "Target Support Files/Pods-TheBestApp-TheBestAppUITests/Pods-TheBestApp-TheBestAppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		1BD9E4DA24158C0800FD3D62 /* CategoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewController.swift; sourceTree = "<group>"; };
 		1BD9E4DC24158CD000FD3D62 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
-		1F7939CDB55B526EB9F94B8D /* libPods-TheBestApp-TheBestAppUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TheBestApp-TheBestAppUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22C26D632134D6545F3FB21B /* Pods-TheBestApp-TheBestAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheBestApp-TheBestAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-TheBestApp-TheBestAppUITests/Pods-TheBestApp-TheBestAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2C29F1AA240EF68700A3B182 /* TheBestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheBestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C29F1AD240EF68700A3B182 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C29F1AF240EF68700A3B182 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +70,8 @@
 		2C3D12A12411A1C500470971 /* JoinerLobbyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinerLobbyViewController.swift; sourceTree = "<group>"; };
 		2C3D12A82411C50200470971 /* VotingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingSession.swift; sourceTree = "<group>"; };
 		2C3D12AE2414B56B00470971 /* SquareClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareClient.swift; sourceTree = "<group>"; };
+		2C3D12B124160EEE00470971 /* CategoryCellDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCellDesignView.swift; sourceTree = "<group>"; };
+		2C3D12B524162C4300470971 /* CategoryVotingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVotingViewController.swift; sourceTree = "<group>"; };
 		337C94BB634348D482A143B6 /* Pods-TheBestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheBestApp.release.xcconfig"; path = "Target Support Files/Pods-TheBestApp/Pods-TheBestApp.release.xcconfig"; sourceTree = "<group>"; };
 		4F310AF0EE6BEA8B72869406 /* libPods-TheBestAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TheBestAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A057C13241499E4003200AD /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D4B49A6C90A612432E986E1 /* libPods-TheBestApp.a in Frameworks */,
+				142CA3101C86A518101097DA /* libPods-TheBestApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +140,7 @@
 		2C29F1AC240EF68700A3B182 /* TheBestApp */ = {
 			isa = PBXGroup;
 			children = (
+				2C3D12B024160EDF00470971 /* Styles */,
 				2C3D12A72411C49900470971 /* Helpers */,
 				2C29F1DD240EF6D200A3B182 /* Storyboards */,
 				2C29F1DE240EF70000A3B182 /* Delegates */,
@@ -191,11 +191,11 @@
 			isa = PBXGroup;
 			children = (
 				2C29F1B1240EF68700A3B182 /* HomeViewController.swift */,
+				2C3D12B524162C4300470971 /* CategoryVotingViewController.swift */,
 				2C3D129D2411843C00470971 /* CreateSessionViewController.swift */,
 				2C3D129F24118DDC00470971 /* JoinSessionViewController.swift */,
 				2C3D12A12411A1C500470971 /* JoinerLobbyViewController.swift */,
 				6AA7BF8E24119E5000BAFAB7 /* InfoSessionViewController.swift */,
-				1BD9E4DA24158C0800FD3D62 /* CategoriesTableViewController.swift */,
 				1BD9E4DC24158CD000FD3D62 /* CategoryCell.swift */,
 			);
 			path = ViewControllers;
@@ -208,6 +208,14 @@
 				2C3D12A82411C50200470971 /* VotingSession.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		2C3D12B024160EDF00470971 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				2C3D12B124160EEE00470971 /* CategoryCellDesignView.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 		535988D4983B3AA1B3F278E0 /* Frameworks */ = {
@@ -477,15 +485,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C29F1B2240EF68700A3B182 /* HomeViewController.swift in Sources */,
+				2C3D12B224160EEE00470971 /* CategoryCellDesignView.swift in Sources */,
 				2C3D129E2411843C00470971 /* CreateSessionViewController.swift in Sources */,
 				2C3D12AF2414B56B00470971 /* SquareClient.swift in Sources */,
 				2C3D12A22411A1C500470971 /* JoinerLobbyViewController.swift in Sources */,
+				2C3D12B624162C4300470971 /* CategoryVotingViewController.swift in Sources */,
 				2C29F1AE240EF68700A3B182 /* AppDelegate.swift in Sources */,
 				6AA7BF8F24119E5000BAFAB7 /* InfoSessionViewController.swift in Sources */,
 				2C29F1B0240EF68700A3B182 /* SceneDelegate.swift in Sources */,
 				2C3D12A92411C50200470971 /* VotingSession.swift in Sources */,
 				2C3D12A024118DDD00470971 /* JoinSessionViewController.swift in Sources */,
-				1BD9E4DB24158C0800FD3D62 /* CategoriesTableViewController.swift in Sources */,
 				1BD9E4DD24158CD000FD3D62 /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,12 +9,13 @@
 import UIKit
 
 class CategoryCell: UITableViewCell {
-
-    @IBOutlet weak var categoryLabel: UILabel!
+    
+    @IBOutlet weak var categoryImageView: UIImageView!
+    
+    @IBOutlet weak var categoryLabelView: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

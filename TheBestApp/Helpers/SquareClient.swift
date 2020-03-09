@@ -24,7 +24,7 @@ class SquareClient {
         SquareClient.AUTH_QUERY_STRING = "client_id=\(SquareClient.CLIENT_ID)&client_secret=\(SquareClient.CLIENT_SECRET)&v=20141020&"
     }
     
-    static func fetchCategories(location: CLLocation, radius: CLLocationDistance, closure: @escaping (NSArray) -> Void) {
+    static func fetchCategories(location: CLLocation, radius: CLLocationDistance, closure: @escaping ([NSDictionary]) -> Void) {
         let queryParams = SquareClient.AUTH_QUERY_STRING +  "ll=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=\(Int(radius))&query=restaurant"
 
         let url = URL(string: SquareClient.SEARCH_ENDPOINT + queryParams.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
@@ -61,14 +61,14 @@ class SquareClient {
                             categoriesList.append(category as! NSDictionary)
                         }
                         
-                        closure(categoriesList as NSArray)
+                        closure(categoriesList)
                     }
                 }
         });
         task.resume()
     }
     
-    static func fetchRestaurants(location: CLLocation, radius: CLLocationDistance, categories: NSArray, closure: @escaping (NSArray) -> Void) {
+    static func fetchRestaurants(location: CLLocation, radius: CLLocationDistance, categories: NSArray, closure: @escaping ([NSDictionary]) -> Void) {
         
         var queryParams = SquareClient.AUTH_QUERY_STRING +  "ll=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=\(Int(radius))&categoryId="
         
@@ -93,8 +93,9 @@ class SquareClient {
                 if let data = dataOrNil {
                     if let responseDictionary = try! JSONSerialization.jsonObject(
                         with: data, options:[]) as? NSDictionary {
-                        let restaurants = responseDictionary.value(forKeyPath: "response.venues") as! NSArray
-                        closure(restaurants as NSArray)
+                        let restaurants = responseDictionary.value(forKeyPath: "response.venues") as! [NSDictionary]
+                        
+                        closure(restaurants)
                     }
                 }
         });
@@ -119,6 +120,7 @@ class SquareClient {
                 if let data = dataOrNil {
                     if let responseDictionary = try! JSONSerialization.jsonObject(
                         with: data, options:[]) as? NSDictionary {
+                        
                         let restaurant = responseDictionary.value(forKeyPath: "response.venue") as! NSDictionary
                         closure(restaurant)
                     }

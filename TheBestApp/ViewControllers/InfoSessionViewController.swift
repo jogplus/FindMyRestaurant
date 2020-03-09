@@ -26,22 +26,22 @@ class InfoSessionViewController: UIViewController {
         
         
         
-        SquareClient.fetchCategories(location: VotingSession.location, radius: VotingSession.radius) { (categories) in
-            var categoryIds = [String]()
-            for category in categories as! [NSDictionary] {
-                categoryIds.append(category.value(forKey: "id") as! String)
-            }
-            
-            SquareClient.fetchRestaurants(location: VotingSession.location, radius: VotingSession.radius, categories: categoryIds as NSArray) { (restaurants) in
-                let firstRestaurant = restaurants[0] as! NSDictionary
-                
-                print(restaurants.count)
-                
-                SquareClient.fetchRestaurantInfo(restaurantId: firstRestaurant.value(forKey: "id") as! String) { (restaurant) in
-                    print(restaurant.value(forKey: "name") ?? "")
-                }
-            }
-        }
+//        SquareClient.fetchCategories(location: VotingSession.location, radius: VotingSession.radius) { (categories) in
+//            var categoryIds = [String]()
+//            for category in categories {
+//                categoryIds.append(category.value(forKey: "id") as! String)
+//            }
+//            
+//            SquareClient.fetchRestaurants(location: VotingSession.location, radius: VotingSession.radius, categories: categoryIds as NSArray) { (restaurants) in
+//                let firstRestaurant = restaurants[0]
+//                
+//                print(restaurants.count)
+//                
+//                SquareClient.fetchRestaurantInfo(restaurantId: firstRestaurant.value(forKey: "id") as! String) { (restaurant) in
+//                    print(restaurant.value(forKey: "name") ?? "")
+//                }
+//            }
+//        }
         
         
     }
