@@ -264,27 +264,27 @@ As a result, all party members must smile and be grateful once the app makes the
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="140" id="37q-Du-U39" customClass="CategoryCell" customModule="TheBestApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="140"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="101" id="37q-Du-U39" customClass="CategoryCell" customModule="TheBestApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="37q-Du-U39" id="vQS-ym-bIV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="101"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhl-iD-eWY" customClass="CategoryCellDesignView" customModule="TheBestApp" customModuleProvider="target">
-                                                    <rect key="frame" x="23" y="12" width="329" height="116"/>
+                                                    <rect key="frame" x="23" y="12" width="329" height="77"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jgI-vp-qc8">
-                                                            <rect key="frame" x="8" y="8" width="90" height="100"/>
+                                                            <rect key="frame" x="8" y="8" width="61" height="61"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="90" id="YsR-pK-yMx"/>
-                                                                <constraint firstAttribute="height" constant="90" id="fen-yl-gfL"/>
+                                                                <constraint firstAttribute="height" constant="61" id="Ce8-Al-7eD"/>
+                                                                <constraint firstAttribute="width" constant="61" id="Z6T-rR-vMn"/>
                                                                 <constraint firstAttribute="width" secondItem="jgI-vp-qc8" secondAttribute="height" multiplier="82:82" id="zWn-1e-t7U"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jXg-tN-CLD">
-                                                            <rect key="frame" x="114" y="8" width="199" height="100"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="32"/>
+                                                            <rect key="frame" x="85" y="8" width="228" height="61"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -354,7 +354,7 @@ As a result, all party members must smile and be grateful once the app makes the
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c14-KS-Gyg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1105" y="2982"/>
+            <point key="canvasLocation" x="1104.8" y="2981.5592203898054"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Ia9-df-IqE">
