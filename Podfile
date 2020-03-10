@@ -9,6 +9,7 @@ target 'TheBestApp' do
   # Pods for TheBestApp
   pod 'Parse'
   pod 'AlamofireImage'
+  pod 'lottie-ios'
 
   target 'TheBestAppTests' do
     inherit! :search_paths

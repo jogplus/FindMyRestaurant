@@ -13,35 +13,47 @@ class InfoSessionViewController: UIViewController {
 
     @IBOutlet weak var sessionCodeLabel: UILabel!
     @IBOutlet weak var sessionCountLabel: UILabel!
+    @IBOutlet weak var sessionCountSubLabel: UILabel!
+    @IBOutlet weak var sessionCodeSubLabel: UILabel!
+    @IBOutlet weak var startVoteButton: UIButton!
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     
     var timer : Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        sessionCodeLabel.text = VotingSession.getSessionId()
+        sessionCodeLabel.isHidden = true
+        sessionCountLabel.isHidden = true
+        sessionCodeSubLabel.isHidden = true
+        sessionCountSubLabel.isHidden = true
+        startVoteButton.isHidden = true
+        loadingView.isHidden = false
         
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateUserCount), userInfo: nil, repeats: true)
-        
-        
-        
-//        SquareClient.fetchCategories(location: VotingSession.location, radius: VotingSession.radius) { (categories) in
-//            var categoryIds = [String]()
-//            for category in categories {
-//                categoryIds.append(category.value(forKey: "id") as! String)
-//            }
-//            
-//            SquareClient.fetchRestaurants(location: VotingSession.location, radius: VotingSession.radius, categories: categoryIds as NSArray) { (restaurants) in
-//                let firstRestaurant = restaurants[0]
-//                
-//                print(restaurants.count)
-//                
-//                SquareClient.fetchRestaurantInfo(restaurantId: firstRestaurant.value(forKey: "id") as! String) { (restaurant) in
-//                    print(restaurant.value(forKey: "name") ?? "")
-//                }
-//            }
-//        }
+        VotingSession.createSession { (success, error) in
+            if success {
+                self.sessionCodeLabel.text = VotingSession.getSessionId()
+                self.sessionCodeLabel.isHidden = false
+                self.sessionCountLabel.isHidden = false
+                self.sessionCodeSubLabel.isHidden = false
+                self.sessionCountSubLabel.isHidden = false
+                self.startVoteButton.isHidden = false
+                self.loadingView.isHidden = true
+                self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateUserCount), userInfo: nil, repeats: true)
+                                
+                SquareClient.fetchCategories(location: VotingSession.location, radius: VotingSession.radius, price: VotingSession.price) { (categories) in
+                    VotingSession.saveSessionCategories(categories: categories) { (success, error) in
+                        if success {
+                            print("it did work")
+                        } else {
+                            print("no it did not work")
+                        }
+                    }
+                }
+            }
+            else {
+                print("Error: \(error?.localizedDescription ?? "bad news")")
+            }
+        }
         
         
     }

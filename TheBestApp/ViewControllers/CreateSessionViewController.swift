@@ -48,10 +48,6 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
         
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.isHidden = false
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.view.backgroundColor = .clear
-        navigationController?.navigationBar.isTranslucent = true
         
         self.mapView.showsUserLocation = true
     }
@@ -133,24 +129,7 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
     
     @IBAction func startSession(_ sender: Any) {
         VotingSession.price = priceSegment.selectedSegmentIndex
-        VotingSession.createSession { (success, error) in
-            if success {
-                self.performSegue(withIdentifier: "sessionHostSegue", sender: nil)
-                
-                SquareClient.fetchCategories(location: VotingSession.location, radius: VotingSession.radius, price: VotingSession.price) { (categories) in
-                    VotingSession.saveSessionCategories(categories: categories) { (success, error) in
-                        if success {
-                            print("it did work")
-                        } else {
-                            print("no it did not work")
-                        }
-                    }
-                }
-            }
-            else {
-                print("Error: \(error?.localizedDescription ?? "bad news")")
-            }
-        }
+        self.performSegue(withIdentifier: "sessionHostSegue", sender: nil)
     }
     
     /*
