@@ -13,7 +13,6 @@ import MapKit
 class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var priceSegment: UISegmentedControl!
     @IBOutlet weak var createSessionButton: UIButton!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     @IBOutlet weak var overlayView: UIView!
@@ -28,7 +27,6 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        priceSegment.isHidden = true
         createSessionButton.isHidden = true
         
 //        overlayView.clipsToBounds = true
@@ -74,9 +72,8 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         if locationStatus == .authorizedWhenInUse || locationStatus == .authorizedAlways {
             showCircle()
-            instructionLabel.text = "Setup the search radius and price range:"
+            instructionLabel.text = "Setup the search radius and create the session:"
             loadingView.isHidden = true
-            priceSegment.isHidden = false
             createSessionButton.isHidden = false
         }
     }
@@ -128,7 +125,6 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
     }
     
     @IBAction func startSession(_ sender: Any) {
-        VotingSession.price = priceSegment.selectedSegmentIndex
         self.performSegue(withIdentifier: "sessionHostSegue", sender: nil)
     }
     
