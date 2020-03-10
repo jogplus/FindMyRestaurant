@@ -430,39 +430,55 @@ As a result, all party members must smile and be grateful once the app makes the
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="L16-JX-Lop"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Vote Against a Category" id="F1n-Xv-R3M"/>
+                    <navigationItem key="navigationItem" title="Vote Against a Category" id="F1n-Xv-R3M">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="SId-LJ-Xyl">
+                            <connections>
+                                <action selector="submitVoteOnPress:" destination="NVq-eO-cn0" id="4U5-VK-iiR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="nwy-bi-4dy" id="cFE-1B-0X8"/>
+                        <segue destination="oc8-aO-TIM" kind="presentation" identifier="WaitingViewSegue" id="ERU-cJ-pqa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c14-KS-Gyg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1104.8" y="2981.5592203898054"/>
         </scene>
-        <!--View Controller-->
+        <!--Waiting View Controller-->
         <scene sceneID="Ia9-df-IqE">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="oc8-aO-TIM" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="oc8-aO-TIM" customClass="WaitingViewController" customModule="TheBestApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SuB-Nu-NP2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="6Km-Y2-UpX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODn-C4-O72">
+                                <rect key="frame" x="67" y="220" width="240" height="227"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waiting For Votes..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Vu-M2-TWN">
+                                <rect key="frame" x="16" y="88" width="343" height="124"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="pWs-yU-Gdu"/>
                     </view>
                     <navigationItem key="navigationItem" id="vwh-af-55v"/>
                     <connections>
+                        <outlet property="lottieView" destination="ODn-C4-O72" id="IUH-mH-gwK"/>
                         <segue destination="lWH-b2-NMP" kind="show" id="cCS-V5-BoX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5NJ-Q6-j5I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1105" y="3713"/>
+            <point key="canvasLocation" x="1104.8" y="3712.8935532233886"/>
         </scene>
         <!--Show Result View Controller-->
         <scene sceneID="hQF-xd-cvJ">
@@ -755,6 +771,6 @@ As a result, all party members must smile and be grateful once the app makes the
         <image name="star.fill" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cr6-OX-zUr"/>
+        <segue reference="bWI-yg-659"/>
     </inferredMetricsTieBreakers>
 </document>

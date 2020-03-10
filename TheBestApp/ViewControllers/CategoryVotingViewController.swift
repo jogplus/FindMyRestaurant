@@ -15,6 +15,14 @@ class CategoryVotingViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var tableView: UITableView!
     
     var categoryArray = [PFObject]()
+    
+    @IBAction func submitVoteOnPress(_ sender: Any) {
+        let selctedIndex = tableView.indexPathForSelectedRow
+        if selctedIndex != nil {
+            self.performSegue(withIdentifier: "WaitingViewSegue", sender: nil)
+        }
+    }
+    
         
     override func viewDidLoad() {
         super.viewDidLoad()
