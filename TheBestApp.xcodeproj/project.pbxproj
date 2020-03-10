@@ -26,8 +26,7 @@
 		2C3D12B624162C4300470971 /* CategoryVotingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3D12B524162C4300470971 /* CategoryVotingViewController.swift */; };
 		515C91D52827CDF5E9E4D832 /* libPods-TheBestApp-TheBestAppUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D6344E5AB6D1B233C591345 /* libPods-TheBestApp-TheBestAppUITests.a */; };
 		625340458D520512DE09AED1 /* libPods-TheBestApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D8E601647EC4F093D95D84C /* libPods-TheBestApp.a */; };
-		6A3A0369241754F600FC3F74 /* 197-glow-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 6A3A0367241754F600FC3F74 /* 197-glow-loading.json */; };
-		6A3A036A241754F600FC3F74 /* 1342-location.json in Resources */ = {isa = PBXBuildFile; fileRef = 6A3A0368241754F600FC3F74 /* 1342-location.json */; };
+		6A7649372417614300C67EA8 /* 1342-location.json in Resources */ = {isa = PBXBuildFile; fileRef = 6A7649362417614200C67EA8 /* 1342-location.json */; };
 		6AA7BF8F24119E5000BAFAB7 /* InfoSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA7BF8E24119E5000BAFAB7 /* InfoSessionViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,8 +82,7 @@
 		6A057C15241499E4003200AD /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A057C17241499E4003200AD /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A057C19241499E4003200AD /* Parse.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Parse.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A3A0367241754F600FC3F74 /* 197-glow-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "197-glow-loading.json"; path = "../../../../../../Downloads/197-glow-loading.json"; sourceTree = "<group>"; };
-		6A3A0368241754F600FC3F74 /* 1342-location.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "1342-location.json"; path = "../../../../../../Downloads/1342-location.json"; sourceTree = "<group>"; };
+		6A7649362417614200C67EA8 /* 1342-location.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "1342-location.json"; sourceTree = "<group>"; };
 		6AA7BF8E24119E5000BAFAB7 /* InfoSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSessionViewController.swift; sourceTree = "<group>"; };
 		8E3EBD2DC6BDE5E971BD2D59 /* Pods-TheBestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheBestApp.release.xcconfig"; path = "Target Support Files/Pods-TheBestApp/Pods-TheBestApp.release.xcconfig"; sourceTree = "<group>"; };
 		D2C13A0C8FDF708D1EA9CF13 /* Pods-TheBestAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheBestAppTests.release.xcconfig"; path = "Target Support Files/Pods-TheBestAppTests/Pods-TheBestAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -253,8 +251,7 @@
 		6A3A0366241754E400FC3F74 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
-				6A3A0367241754F600FC3F74 /* 197-glow-loading.json */,
-				6A3A0368241754F600FC3F74 /* 1342-location.json */,
+				6A7649362417614200C67EA8 /* 1342-location.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -370,9 +367,8 @@
 			files = (
 				2C29F1BA240EF68900A3B182 /* LaunchScreen.storyboard in Resources */,
 				2C29F1B7240EF68900A3B182 /* Assets.xcassets in Resources */,
+				6A7649372417614300C67EA8 /* 1342-location.json in Resources */,
 				2C29F1B5240EF68700A3B182 /* Main.storyboard in Resources */,
-				6A3A036A241754F600FC3F74 /* 1342-location.json in Resources */,
-				6A3A0369241754F600FC3F74 /* 197-glow-loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
