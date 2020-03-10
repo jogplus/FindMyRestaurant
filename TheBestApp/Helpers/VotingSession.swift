@@ -163,7 +163,7 @@ class VotingSession {
         
         query.findObjectsInBackground { (restaurant, error) in
             var restaurantDict : NSDictionary!
-            if restaurant != nil {
+            if restaurant!.count > 0 {
                 let restaurantObj = restaurant![0]
                 restaurantDict = restaurantObj["venue"] as? NSDictionary
             }
