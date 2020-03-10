@@ -29,7 +29,10 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
     @IBOutlet weak var websiteButton: UIButton!
     @IBOutlet weak var phoneClicked: UIButton!
     
-  
+    @IBAction func backToHomeOnPress(_ sender: Any) {
+        self.performSegue(withIdentifier: "backToHomeSegue", sender: nil)
+    }
+    
     
     //   @IBOutlet var linkView: UITextView!
     var ratings: Float = 0.0
