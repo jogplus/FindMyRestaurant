@@ -3,6 +3,7 @@ PODS:
   - AlamofireImage (4.0.3):
     - Alamofire (< 6.0.0, >= 5.0.2)
   - Bolts/Tasks (1.9.0)
+  - lottie-ios (3.1.6)
   - Parse (1.17.3):
     - Parse/Core (= 1.17.3)
   - Parse/Core (1.17.3):
@@ -10,6 +11,7 @@ PODS:
 
 DEPENDENCIES:
   - AlamofireImage
+  - lottie-ios
   - Parse
 
 SPEC REPOS:
@@ -17,14 +19,16 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - Bolts
+    - lottie-ios
     - Parse
 
 SPEC CHECKSUMS:
   Alamofire: 3ba7a4db18b4f62c4a1c0e1cb39d7f3d52e10ada
   AlamofireImage: 3d1a2010519e58675318735580eb856e88840ff7
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
   Parse: c1ad2a04d2cab2b54b6fb7da05f741abf2cf57d1
 
-PODFILE CHECKSUM: 27b204af5104387a6dc0b19995b8eb8e5889f678
+PODFILE CHECKSUM: 1dc3d27dc6aa3748fcab1fb753db5b79705461fb
 
-COCOAPODS: 1.9.0
+COCOAPODS: 1.8.4

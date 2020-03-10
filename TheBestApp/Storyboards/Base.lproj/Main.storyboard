@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RjL-In-SBX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lWH-b2-NMP">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -464,10 +464,10 @@ As a result, all party members must smile and be grateful once the app makes the
             </objects>
             <point key="canvasLocation" x="1105" y="3713"/>
         </scene>
-        <!--View Controller-->
+        <!--Show Result View Controller-->
         <scene sceneID="hQF-xd-cvJ">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="lWH-b2-NMP" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="lWH-b2-NMP" customClass="ShowResultViewController" customModule="TheBestApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5ju-6D-D5d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -476,15 +476,100 @@ As a result, all party members must smile and be grateful once the app makes the
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="315"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restaurant Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="guS-eW-rik">
+                                <rect key="frame" x="49" y="335" width="278" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Address" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7LN-7e-sIo">
+                                <rect key="frame" x="16" y="379" width="343" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" address="YES"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgT-kl-qQI">
+                                <rect key="frame" x="16" y="455" width="47" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="link.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
+                                </state>
+                                <connections>
+                                    <action selector="websiteClicked:" destination="lWH-b2-NMP" eventType="touchUpInside" id="3Rx-b5-iVy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K3m-8d-jFI">
+                                <rect key="frame" x="71" y="455" width="42" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="phone.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
+                                </state>
+                                <connections>
+                                    <action selector="phoneClicked:" destination="lWH-b2-NMP" eventType="touchUpInside" id="nYX-71-Xhw"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="LeH-XM-IY4">
+                                <rect key="frame" x="194" y="450" width="44" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zL3-lH-oP0">
+                                <rect key="frame" x="230" y="452" width="44" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ju6-vt-wOH">
+                                <rect key="frame" x="268" y="451" width="44" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nvE-ay-EAf">
+                                <rect key="frame" x="308" y="447" width="44" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BG9-B8-v90">
+                                <rect key="frame" x="21" y="508" width="291" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXa-70-QZi">
+                                <rect key="frame" x="21" y="606" width="206" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="onLinkClick:" destination="lWH-b2-NMP" eventType="touchUpInside" id="X8V-HW-Qks"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="i9r-XV-vpx">
+                                <rect key="frame" x="156" y="453" width="44" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="35f-p9-ceS"/>
                     </view>
                     <navigationItem key="navigationItem" id="h6N-7E-J9r"/>
+                    <connections>
+                        <outlet property="linkLabel" destination="nXa-70-QZi" id="ur6-5r-KZ2"/>
+                        <outlet property="mapView" destination="bD6-q4-Y3K" id="cdB-mr-Iq9"/>
+                        <outlet property="phoneClicked" destination="K3m-8d-jFI" id="DKl-Cx-smV"/>
+                        <outlet property="restaurantNameLabel" destination="guS-eW-rik" id="iyb-aM-gf6"/>
+                        <outlet property="star1Image" destination="i9r-XV-vpx" id="UpG-h3-RYL"/>
+                        <outlet property="star2Image" destination="LeH-XM-IY4" id="qos-LZ-3hu"/>
+                        <outlet property="star3Image" destination="zL3-lH-oP0" id="faF-OV-kfk"/>
+                        <outlet property="star4Image" destination="Ju6-vt-wOH" id="nuj-Xl-9wO"/>
+                        <outlet property="star5Image" destination="nvE-ay-EAf" id="ZRP-eS-MDw"/>
+                        <outlet property="statusLabel" destination="BG9-B8-v90" id="yOU-sO-f4w"/>
+                        <outlet property="textViewLabel" destination="7LN-7e-sIo" id="VQ5-9C-jjA"/>
+                        <outlet property="websiteButton" destination="TgT-kl-qQI" id="FhW-gH-ptU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x0A-gw-lsT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1105" y="4462"/>
+            <point key="canvasLocation" x="1104.8" y="4461.3193403298355"/>
         </scene>
         <!--Join Session-->
         <scene sceneID="mJO-DC-8k7">
@@ -664,7 +749,10 @@ As a result, all party members must smile and be grateful once the app makes the
         <image name="drawkit-fast-food-colour-1200px" width="1200" height="1223"/>
         <image name="drawkit-phone-conversation-colour-1200px" width="1200" height="1200"/>
         <image name="handshake-colour-1200px" width="1200" height="855"/>
+        <image name="link.circle.fill" catalog="system" width="64" height="60"/>
         <image name="map-colour-400px" width="400" height="481"/>
+        <image name="phone.fill" catalog="system" width="64" height="56"/>
+        <image name="star.fill" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="cr6-OX-zUr"/>
