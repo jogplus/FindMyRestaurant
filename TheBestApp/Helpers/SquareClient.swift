@@ -121,6 +121,8 @@ class SquareClient {
                     if let responseDictionary = try! JSONSerialization.jsonObject(
                         with: data, options:[]) as? NSDictionary {
                         
+                        print(responseDictionary)
+                        
                         let restaurant = responseDictionary.value(forKeyPath: "response.venue") as! NSDictionary
                         closure(restaurant)
                     }

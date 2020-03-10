@@ -369,8 +369,8 @@ As a result, all party members must smile and be grateful once the app makes the
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jgI-vp-qc8">
                                                             <rect key="frame" x="8" y="8" width="61" height="61"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="61" id="Ce8-Al-7eD"/>
                                                                 <constraint firstAttribute="width" constant="61" id="Z6T-rR-vMn"/>
+                                                                <constraint firstAttribute="height" constant="61" id="mGC-EP-rii"/>
                                                                 <constraint firstAttribute="width" secondItem="jgI-vp-qc8" secondAttribute="height" multiplier="82:82" id="zWn-1e-t7U"/>
                                                             </constraints>
                                                         </imageView>
@@ -439,7 +439,7 @@ As a result, all party members must smile and be grateful once the app makes the
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="nwy-bi-4dy" id="cFE-1B-0X8"/>
-                        <segue destination="oc8-aO-TIM" kind="presentation" identifier="WaitingViewSegue" id="ERU-cJ-pqa"/>
+                        <segue destination="oc8-aO-TIM" kind="presentation" identifier="WaitingViewSegue" id="CS9-an-oq7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c14-KS-Gyg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -457,7 +457,6 @@ As a result, all party members must smile and be grateful once the app makes the
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODn-C4-O72">
                                 <rect key="frame" x="67" y="220" width="240" height="227"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waiting For Votes..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Vu-M2-TWN">
                                 <rect key="frame" x="16" y="88" width="343" height="124"/>
@@ -473,34 +472,136 @@ As a result, all party members must smile and be grateful once the app makes the
                     <navigationItem key="navigationItem" id="vwh-af-55v"/>
                     <connections>
                         <outlet property="lottieView" destination="ODn-C4-O72" id="IUH-mH-gwK"/>
-                        <segue destination="lWH-b2-NMP" kind="show" id="cCS-V5-BoX"/>
+                        <segue destination="lWH-b2-NMP" kind="show" identifier="FinalRestaurantSeg" id="cCS-V5-BoX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5NJ-Q6-j5I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1104.8" y="3712.8935532233886"/>
         </scene>
-        <!--View Controller-->
+        <!--Show Result View Controller-->
         <scene sceneID="hQF-xd-cvJ">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="lWH-b2-NMP" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="lWH-b2-NMP" customClass="ShowResultViewController" customModule="TheBestApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5ju-6D-D5d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bD6-q4-Y3K">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="315"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restaurant Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="guS-eW-rik">
+                                <rect key="frame" x="0.0" y="342" width="375" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Address" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7LN-7e-sIo">
+                                <rect key="frame" x="17" y="430" width="184" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" address="YES"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K3m-8d-jFI">
+                                <rect key="frame" x="277" y="420" width="59" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="phone.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
+                                </state>
+                                <connections>
+                                    <action selector="phoneClicked:" destination="lWH-b2-NMP" eventType="touchUpInside" id="nYX-71-Xhw"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="LeH-XM-IY4">
+                                <rect key="frame" x="113" y="531" width="44" height="43"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zL3-lH-oP0">
+                                <rect key="frame" x="165" y="531" width="44" height="43"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ju6-vt-wOH">
+                                <rect key="frame" x="217" y="531" width="44" height="43"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nvE-ay-EAf">
+                                <rect key="frame" x="269" y="531" width="44" height="43"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Open Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BG9-B8-v90">
+                                <rect key="frame" x="0.0" y="396" width="375" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nXa-70-QZi">
+                                <rect key="frame" x="157" y="463" width="206" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Open in google maps"/>
+                                <connections>
+                                    <action selector="onLinkClick:" destination="lWH-b2-NMP" eventType="touchUpInside" id="X8V-HW-Qks"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="i9r-XV-vpx">
+                                <rect key="frame" x="61" y="531" width="44" height="43"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2jN-zH-nEr">
+                                <rect key="frame" x="27" y="592" width="335" height="48"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="FIY-HI-3cz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <state key="normal" title="Back to Home">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgT-kl-qQI">
+                                <rect key="frame" x="209" y="436" width="27" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Button" image="link.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
+                                </state>
+                                <connections>
+                                    <action selector="websiteClicked:" destination="lWH-b2-NMP" eventType="touchUpInside" id="3Rx-b5-iVy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="zL3-lH-oP0" firstAttribute="leading" secondItem="LeH-XM-IY4" secondAttribute="trailing" id="6yW-EI-k5c"/>
+                            <constraint firstItem="Ju6-vt-wOH" firstAttribute="leading" secondItem="zL3-lH-oP0" secondAttribute="trailing" id="JlU-Tx-f9f"/>
+                            <constraint firstItem="nvE-ay-EAf" firstAttribute="leading" secondItem="Ju6-vt-wOH" secondAttribute="trailing" id="N8Z-jK-TIb"/>
+                            <constraint firstItem="LeH-XM-IY4" firstAttribute="leading" secondItem="i9r-XV-vpx" secondAttribute="trailing" id="ddN-6N-I4e"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="35f-p9-ceS"/>
                     </view>
                     <navigationItem key="navigationItem" id="h6N-7E-J9r"/>
+                    <connections>
+                        <outlet property="linkLabel" destination="nXa-70-QZi" id="ur6-5r-KZ2"/>
+                        <outlet property="mapView" destination="bD6-q4-Y3K" id="cdB-mr-Iq9"/>
+                        <outlet property="phoneClicked" destination="K3m-8d-jFI" id="DKl-Cx-smV"/>
+                        <outlet property="restaurantNameLabel" destination="guS-eW-rik" id="iyb-aM-gf6"/>
+                        <outlet property="star1Image" destination="i9r-XV-vpx" id="UpG-h3-RYL"/>
+                        <outlet property="star2Image" destination="LeH-XM-IY4" id="qos-LZ-3hu"/>
+                        <outlet property="star3Image" destination="zL3-lH-oP0" id="faF-OV-kfk"/>
+                        <outlet property="star4Image" destination="Ju6-vt-wOH" id="nuj-Xl-9wO"/>
+                        <outlet property="star5Image" destination="nvE-ay-EAf" id="ZRP-eS-MDw"/>
+                        <outlet property="statusLabel" destination="BG9-B8-v90" id="yOU-sO-f4w"/>
+                        <outlet property="textViewLabel" destination="7LN-7e-sIo" id="VQ5-9C-jjA"/>
+                        <outlet property="websiteButton" destination="TgT-kl-qQI" id="FhW-gH-ptU"/>
+                        <segue destination="RjL-In-SBX" kind="presentation" id="I7b-yP-WdZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x0A-gw-lsT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1105" y="4462"/>
+            <point key="canvasLocation" x="1104.8" y="4461.3193403298355"/>
         </scene>
         <!--Join Session-->
         <scene sceneID="mJO-DC-8k7">
@@ -662,6 +763,7 @@ As a result, all party members must smile and be grateful once the app makes the
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="RjL-In-SBX" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Ikq-Cs-Uip"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hma-y0-f8W">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -680,9 +782,12 @@ As a result, all party members must smile and be grateful once the app makes the
         <image name="drawkit-fast-food-colour-1200px" width="1200" height="1223"/>
         <image name="drawkit-phone-conversation-colour-1200px" width="1200" height="1200"/>
         <image name="handshake-colour-1200px" width="1200" height="855"/>
+        <image name="link.circle.fill" catalog="system" width="64" height="60"/>
         <image name="map-colour-400px" width="400" height="481"/>
+        <image name="phone.fill" catalog="system" width="64" height="56"/>
+        <image name="star.fill" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bWI-yg-659"/>
+        <segue reference="cr6-OX-zUr"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -14,6 +14,8 @@ class WaitingViewController: UIViewController {
     @IBOutlet weak var lottieView: UIView!
     let animationView = AnimationView()
     
+    var timer: Timer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,6 +47,45 @@ class WaitingViewController: UIViewController {
 
         
         animationView.play()
+        
+        if VotingSession.sessionCreater {
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.votesFinished), userInfo: nil, repeats: true)
+        } else {
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.restaurantFound), userInfo: nil, repeats: true)
+        }
+    }
+    
+    @objc func votesFinished() {
+        VotingSession.getRemainingCategories { (categories, error) in
+            if categories != nil {
+                SquareClient.fetchRestaurants(location: VotingSession.location, radius: VotingSession.radius, categories: categories! as NSArray) { (restaurants) in
+                    
+                    let finalRestaurant = restaurants.randomElement()
+                    let finalRestaurantId = finalRestaurant?.value(forKey: "id")
+                    VotingSession.saveFinalRestaurant(restaurantId: finalRestaurantId as! String) { (success, error) in
+                        if success {
+                            print("we picked a restaurant")
+                        } else {
+                            print("there was an error \(String(describing: error))")
+                        }
+                    }
+                }
+                self.performSegue(withIdentifier: "FinalRestaurantSeg", sender: nil)
+            } else {
+                print("there was an error: \(String(describing: error))")
+            }
+        }
+    }
+    
+    @objc func restaurantFound() {
+        if VotingSession.getFinalRestaurant() != nil {
+            self.performSegue(withIdentifier: "FinalRestaurantSeg", sender: nil)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        timer?.invalidate()
     }
     
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		10CF3F47475599A2C224A0E7 /* libPods-TheBestAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 546F444F1DE0D84E4A1756A0 /* libPods-TheBestAppTests.a */; };
+		1B6C0FC02417677400AB5662 /* ShowResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6C0FBF2417677400AB5662 /* ShowResultViewController.swift */; };
 		1BD9E4DD24158CD000FD3D62 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD9E4DC24158CD000FD3D62 /* CategoryCell.swift */; };
 		2C29F1AE240EF68700A3B182 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C29F1AD240EF68700A3B182 /* AppDelegate.swift */; };
 		2C29F1B0240EF68700A3B182 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C29F1AF240EF68700A3B182 /* SceneDelegate.swift */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		05D7277E4DA5A039A4202933 /* Pods-TheBestApp-TheBestAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheBestApp-TheBestAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-TheBestApp-TheBestAppUITests/Pods-TheBestApp-TheBestAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		1B6C0FBF2417677400AB5662 /* ShowResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowResultViewController.swift; sourceTree = "<group>"; };
 		1BD9E4DC24158CD000FD3D62 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		2C29F1AA240EF68700A3B182 /* TheBestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheBestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C29F1AD240EF68700A3B182 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				2C3D12A12411A1C500470971 /* JoinerLobbyViewController.swift */,
 				6AA7BF8E24119E5000BAFAB7 /* InfoSessionViewController.swift */,
 				1BD9E4DC24158CD000FD3D62 /* CategoryCell.swift */,
+				1B6C0FBF2417677400AB5662 /* ShowResultViewController.swift */,
 				6A7649382417679800C67EA8 /* WaitingViewController.swift */,
 			);
 			path = ViewControllers;
@@ -511,6 +514,7 @@
 				2C29F1B0240EF68700A3B182 /* SceneDelegate.swift in Sources */,
 				2C3D12A92411C50200470971 /* VotingSession.swift in Sources */,
 				2C3D12A024118DDD00470971 /* JoinSessionViewController.swift in Sources */,
+				1B6C0FC02417677400AB5662 /* ShowResultViewController.swift in Sources */,
 				1BD9E4DD24158CD000FD3D62 /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
