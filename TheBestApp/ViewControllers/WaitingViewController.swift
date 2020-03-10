@@ -71,7 +71,7 @@ class WaitingViewController: UIViewController {
                                 let finalRestaurantId = finalRestaurant?.value(forKey: "id")
                                 
                                 SquareClient.fetchRestaurantInfo(restaurantId: finalRestaurantId as! String) { (finalRestaurantDict) in
-                                    VotingSession.saveFinalRestaurant(restaurantDict: finalRestaurantDict as! NSDictionary) { (success, error) in
+                                    VotingSession.saveFinalRestaurant(restaurantDict: finalRestaurantDict) { (success, error) in
                                         if success {
                                             print("we picked a restaurant")
                                             self.performSegue(withIdentifier: "FinalRestaurantSeg", sender: nil)

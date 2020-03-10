@@ -91,47 +91,43 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
     
     
     func loadVenueDetails(){
-        let finalResaurant = VotingSession.getFinalRestaurant()!
-        SquareClient.fetchRestaurantInfo(restaurantId: finalResaurant){
-             (venue) in
-            
-            self.restaurantNameLabel.text = venue.value(forKey: "name") as? String
-            let contactInfo = venue.value(forKey: "contact") as? NSDictionary
-            self.phoneNumber = contactInfo?.value(forKey: "phone") as? String ?? "None"
-            let locationInfo = venue.value(forKey: "location") as? NSDictionary
-            self.onlyAddress = (locationInfo?.value(forKey: "address") as? String)!
-            self.onlyAddress += ", " + (locationInfo?.value(forKey: "city") as? String)!
-            self.onlyAddress += ", " + (locationInfo?.value(forKey: "state") as? String)!
-             self.onlyAddress += " " + (locationInfo?.value(forKey: "postalCode") as? String)!
-             self.onlyAddress += ", " + (locationInfo?.value(forKey: "country") as? String)!
-            self.latitude = Float(truncating: (locationInfo?.value(forKey: "lat") as? NSNumber)!)
-            self.longitude = Float(truncating: (locationInfo?.value(forKey: "lng") as? NSNumber)!)
-            self.ratings = Float(truncating: venue.value(forKey: "rating") as? NSNumber ??  0.0)
-       //     self.ratings = Float(truncating: (venue.value(forKey: "rating") as? NSNumber)!)
-            self.websiteUrl = (venue.value(forKey: "url") as? String) ?? "None"
-            let roundedNum = round(self.ratings)
-            self.ratingInt = Int( roundedNum / 2.0)
-            print(self.ratingInt)
-            self.starRating()
+        VotingSession.getFinalRestaurant() { (venue) in
+            self.restaurantNameLabel.text = venue!.value(forKey: "name") as? String
+            let contactInfo = venue!.value(forKey: "contact") as? NSDictionary
+           self.phoneNumber = contactInfo?.value(forKey: "phone") as? String ?? "None"
+            let locationInfo = venue!.value(forKey: "location") as? NSDictionary
+           self.onlyAddress = (locationInfo?.value(forKey: "address") as? String)!
+           self.onlyAddress += ", " + (locationInfo?.value(forKey: "city") as? String)!
+           self.onlyAddress += ", " + (locationInfo?.value(forKey: "state") as? String)!
+            self.onlyAddress += " " + (locationInfo?.value(forKey: "postalCode") as? String)!
+            self.onlyAddress += ", " + (locationInfo?.value(forKey: "country") as? String)!
+           self.latitude = Float(truncating: (locationInfo?.value(forKey: "lat") as? NSNumber)!)
+           self.longitude = Float(truncating: (locationInfo?.value(forKey: "lng") as? NSNumber)!)
+            self.ratings = Float(truncating: venue!.value(forKey: "rating") as? NSNumber ??  0.0)
+      //     self.ratings = Float(truncating: (venue.value(forKey: "rating") as? NSNumber)!)
+            self.websiteUrl = (venue!.value(forKey: "url") as? String) ?? "None"
+           let roundedNum = round(self.ratings)
+           self.ratingInt = Int( roundedNum / 2.0)
+           print(self.ratingInt)
+           self.starRating()
 
-            print("https://google.com/maps/place/\(self.fullAddress)")
-            let hoursinfo = venue.value(forKey: "hours") as? NSDictionary
-            self.statusLabel.text = hoursinfo?.value(forKey: "status") as? String ?? "Status Unknown"
-            self.displayMapAtLatitude(latitude: Double(self.latitude), longitude: Double(self.longitude))
-          //  let mapTitle: String = "Open \(self.restaurantNameLabel.text!) in Google Maps"
-            self.linkLabel.setTitle("Open in Google Maps", for: .normal)
-            self.textViewLabel.text = self.onlyAddress
-            self.textViewLabel.isEditable = false
-            self.textViewLabel.dataDetectorTypes = UIDataDetectorTypes.all
-            self.zoomIntoLocation(lat: CLLocationDegrees(self.latitude), lng: CLLocationDegrees(self.longitude))
-            
-            if self.websiteUrl == "None"{
-                self.websiteButton.isHidden = true
-            }
-            if self.phoneNumber == "None"{
-                self.phoneClicked.isHidden = true
-            }
- 
+           print("https://google.com/maps/place/\(self.fullAddress)")
+            let hoursinfo = venue!.value(forKey: "hours") as? NSDictionary
+           self.statusLabel.text = hoursinfo?.value(forKey: "status") as? String ?? "Status Unknown"
+           self.displayMapAtLatitude(latitude: Double(self.latitude), longitude: Double(self.longitude))
+         //  let mapTitle: String = "Open \(self.restaurantNameLabel.text!) in Google Maps"
+           self.linkLabel.setTitle("Open in Google Maps", for: .normal)
+           self.textViewLabel.text = self.onlyAddress
+           self.textViewLabel.isEditable = false
+           self.textViewLabel.dataDetectorTypes = UIDataDetectorTypes.all
+           self.zoomIntoLocation(lat: CLLocationDegrees(self.latitude), lng: CLLocationDegrees(self.longitude))
+           
+           if self.websiteUrl == "None"{
+               self.websiteButton.isHidden = true
+           }
+           if self.phoneNumber == "None"{
+               self.phoneClicked.isHidden = true
+           }
         }
     }
     
@@ -178,7 +174,6 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
             self.star3Image.isHidden = true
             self.star4Image.isHidden = true
             self.star5Image.isHidden = true
-            
         }
         
     }
