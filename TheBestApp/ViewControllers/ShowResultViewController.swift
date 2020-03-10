@@ -87,7 +87,7 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
             self.statusLabel.text = hoursinfo?.value(forKey: "status") as? String
             self.displayMapAtLatitude(latitude: Double(self.latitude), longitude: Double(self.longitude))
           //  let mapTitle: String = "Open \(self.restaurantNameLabel.text!) in Google Maps"
-            self.linkLabel.setTitle("Open in google Maps", for: .normal)
+            self.linkLabel.setTitle("Open in Google Maps", for: .normal)
             self.textViewLabel.text = self.fullAddress
             self.textViewLabel.isEditable = false;
             self.textViewLabel.dataDetectorTypes = UIDataDetectorTypes.all;
