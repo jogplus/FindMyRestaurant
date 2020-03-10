@@ -60,6 +60,56 @@ class VotingSession {
         return session["userCount"] as! NSNumber
     }
     
+    static func saveSessionCategories(categories: [NSDictionary], closure: @escaping (Bool, Error?) -> Void) {
+        
+        for category in categories {
+            let newCategory = PFObject(className: "Category")
+            
+            newCategory["sessionId"] = PFUser.current()!
+            newCategory["catId"] = category.value(forKey: "id")
+            newCategory["name"] = category.value(forKey: "name")
+            newCategory["pluralName"] = category.value(forKey: "pluralName")
+            newCategory["shortName"] = category.value(forKey: "shortName")
+            
+            let icon = category.value(forKey: "icon") as? NSDictionary
+            let prefix = icon?.value(forKey: "prefix") as? String
+            let suffix = icon?.value(forKey: "suffix") as? String
+            if (prefix != nil && suffix != nil) {
+                newCategory["iconURL"] = prefix! + "88" + suffix!
+            }
+            
+            newCategory.saveInBackground { (success, error) in
+                if success != true {
+                    closure(success, error)
+                    return
+                }
+            }
+            
+
+//              "id": "52af3a7c3cf9994f4e043bed",
+//              "name": "Cantonese Restaurant",
+//              "pluralName": "Cantonese Restaurants",
+//              "shortName": "Cantonese",
+//              "icon": {
+//                "prefix": "https://ss3.4sqi.net/img/categories_v2/food/asian_",
+//                "suffix": ".png"
+//              },
+//              "primary": true
+//            }
+        }
+        
+        closure(true, nil)
+    }
+    
+    static func getSessionCategories(closure: @escaping ([PFObject]?, Error?) -> Void) {
+        let query = PFQuery(className: "Category")
+        query.whereKey("sessionId", equalTo: PFUser.current()!)
+        
+        query.findObjectsInBackground { (categories, error) in
+            closure(categories, error)
+        }
+    }
+    
     static func getSessionId() -> String {
         return PFUser.current()!.username!
     }
