@@ -78,8 +78,6 @@ class SquareClient {
 
         let url = URL(string: SquareClient.SEARCH_ENDPOINT + queryParams.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
         
-        print(url)
-        
         let request = URLRequest(url: url)
 
         let session = URLSession(
@@ -93,7 +91,10 @@ class SquareClient {
                 if let data = dataOrNil {
                     if let responseDictionary = try! JSONSerialization.jsonObject(
                         with: data, options:[]) as? NSDictionary {
+                        print(responseDictionary)
                         let restaurants = responseDictionary.value(forKeyPath: "response.venues") as! [NSDictionary]
+                        
+                        print(restaurants)
                         
                         closure(restaurants)
                     }
@@ -120,6 +121,8 @@ class SquareClient {
                 if let data = dataOrNil {
                     if let responseDictionary = try! JSONSerialization.jsonObject(
                         with: data, options:[]) as? NSDictionary {
+                        
+                        print(responseDictionary)
                         
                         let restaurant = responseDictionary.value(forKeyPath: "response.venue") as! NSDictionary
                         closure(restaurant)

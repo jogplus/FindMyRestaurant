@@ -369,8 +369,8 @@ As a result, all party members must smile and be grateful once the app makes the
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jgI-vp-qc8">
                                                             <rect key="frame" x="8" y="8" width="61" height="61"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="61" id="Ce8-Al-7eD"/>
                                                                 <constraint firstAttribute="width" constant="61" id="Z6T-rR-vMn"/>
+                                                                <constraint firstAttribute="height" constant="61" id="mGC-EP-rii"/>
                                                                 <constraint firstAttribute="width" secondItem="jgI-vp-qc8" secondAttribute="height" multiplier="82:82" id="zWn-1e-t7U"/>
                                                             </constraints>
                                                         </imageView>
@@ -439,7 +439,7 @@ As a result, all party members must smile and be grateful once the app makes the
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="nwy-bi-4dy" id="cFE-1B-0X8"/>
-                        <segue destination="oc8-aO-TIM" kind="presentation" identifier="WaitingViewSegue" id="ERU-cJ-pqa"/>
+                        <segue destination="oc8-aO-TIM" kind="presentation" identifier="WaitingViewSegue" id="CS9-an-oq7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c14-KS-Gyg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -472,7 +472,7 @@ As a result, all party members must smile and be grateful once the app makes the
                     <navigationItem key="navigationItem" id="vwh-af-55v"/>
                     <connections>
                         <outlet property="lottieView" destination="ODn-C4-O72" id="IUH-mH-gwK"/>
-                        <segue destination="lWH-b2-NMP" kind="show" id="cCS-V5-BoX"/>
+                        <segue destination="lWH-b2-NMP" kind="show" identifier="FinalRestaurantSeg" id="cCS-V5-BoX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5NJ-Q6-j5I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

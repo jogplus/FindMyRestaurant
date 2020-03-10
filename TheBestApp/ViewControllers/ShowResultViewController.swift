@@ -56,9 +56,22 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
             UIApplication.shared.open(urlClick, options: [:]) {_ in }
         }
     }
+    func zoomIntoLocation(){
+        let location = CLLocationCoordinate2D(latitude: CLLocationDegrees(self.latitude), longitude: CLLocationDegrees(self.longitude))
+//        let region = MKCoordinateRegion( center: location, latitudinalMeters: CLLocationDistance(exactly: 5000)!, longitudinalMeters: CLLocationDistance(exactly: 5000)!)
+//        mapView.setRegion(mapView.regionThatFits(region), animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location
+        annotation.title = self.restaurantNameLabel.text
+        mapView.addAnnotation(annotation)
+        mapView.showAnnotations(mapView.annotations, animated: true)
+    }
+    
     
     func loadVenueDetails(){
-        SquareClient.fetchRestaurantInfo(restaurantId: "542616e8498e7e2b1a06433d"){
+        let finalResaurant = VotingSession.getFinalRestaurant()!
+        SquareClient.fetchRestaurantInfo(restaurantId: finalResaurant){
              (venue) in
             
             self.restaurantNameLabel.text = venue.value(forKey: "name") as? String
@@ -141,6 +154,7 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
     override func viewDidLoad() {
         super.viewDidLoad()
         loadVenueDetails()
+        zoomIntoLocation()
             
     }
     @IBAction func onLinkClick(_ sender: Any) {

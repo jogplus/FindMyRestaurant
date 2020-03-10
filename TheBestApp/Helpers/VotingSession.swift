@@ -23,6 +23,7 @@ class VotingSession {
         session.password = String(code)
         session["userCount"] = 1
         session["canVote"] = false
+        session["finalRestaurant"] = ""
         session.signUpInBackground {(success, error) in
             if success {
                 VotingSession.sessionCreater = true
@@ -107,6 +108,25 @@ class VotingSession {
         }
     }
     
+    static func sendVote(categoryId: String, closure: @escaping (Bool, Error?) -> Void) {
+        let newVote = PFObject(className: "Vote")
+        newVote["sessionId"] = PFUser.current()!
+        newVote["catId"] = categoryId
+        
+        newVote.saveInBackground { (success, error) in
+                closure(success, error)
+        }
+    }
+    
+    static func getVotes(closure: @escaping ([PFObject]?, Error?) -> Void) {
+        let query = PFQuery(className: "Vote")
+        query.whereKey("sessionId", equalTo: PFUser.current()!)
+        
+        query.findObjectsInBackground { (votes, error) in
+            closure(votes, error)
+        }
+    }
+    
     static func canVote() -> Bool {
         let session = PFUser.current()!
         return session["canVote"] as! Bool
@@ -116,12 +136,56 @@ class VotingSession {
         return PFUser.current()!.username!
     }
     
-    static func sendVote() {
-        return
+    static func saveFinalRestaurant(restaurantId: String, closure: @escaping (
+    Bool, Error?) -> Void) {
+        print(restaurantId)
+        PFUser.current()!.setObject(restaurantId, forKey: "finalRestaurant")
+        PFUser.current()!.saveInBackground {(success, error) in
+           closure(success, error)
+        }
     }
     
-    static func selectWinner() {
-        return
+    static func getFinalRestaurant() -> String? {
+        let session = PFUser.current()!
+        session.fetchInBackground()
+        
+        if session["finalRestaurant"] as! String == "" {
+            return nil
+        }
+        
+        return session["finalRestaurant"] as? String
+    }
+    
+    static func getRemainingCategories(closure: @escaping ([String]?, Error?) -> Void) {
+        VotingSession.getSessionCategories { (categories, error) in
+            if categories != nil {
+                VotingSession.getVotes { (votes, error) in
+                    
+                    if votes != nil {
+                        var voteSet = Set<String>()
+                        for vote in votes! {
+                            voteSet.insert(vote["catId"] as! String)
+                        }
+                        
+                        
+                        var remainingCategories = [String]()
+                        for category in categories! {
+                            let catId = category["catId"] as! String
+                            if voteSet.contains(catId) == false {
+                                remainingCategories.append(catId)
+                            }
+                        }
+                        
+                        closure(remainingCategories, error)
+                    } else {
+                        closure(nil, error)
+                    }
+                }
+            } else {
+                closure(nil, error)
+            }
+        }
+        
     }
 }
 

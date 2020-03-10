@@ -19,7 +19,15 @@ class CategoryVotingViewController: UIViewController, UITableViewDelegate, UITab
     @IBAction func submitVoteOnPress(_ sender: Any) {
         let selctedIndex = tableView.indexPathForSelectedRow
         if selctedIndex != nil {
-            self.performSegue(withIdentifier: "WaitingViewSegue", sender: nil)
+            let category = categoryArray[selctedIndex!.row]
+            VotingSession.sendVote(categoryId: category["catId"] as! String) { (success, error) in
+                if success {
+                    print("sent the vote")
+                    self.performSegue(withIdentifier: "WaitingViewSegue", sender: nil)
+                } else {
+                    print("there was an error \(String(describing: error))")
+                }
+            }
         }
     }
     
