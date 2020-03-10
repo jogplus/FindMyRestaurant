@@ -25,6 +25,10 @@ class HomeViewController: UIViewController {
         // Do any additional setup after loading the view.
 //        self.view.backgroundColor = .systemGray6
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.view.backgroundColor = .clear
+        navigationController?.navigationBar.isTranslucent = true
     }
 
     override func viewDidAppear(_ animated: Bool) {

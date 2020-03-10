@@ -224,6 +224,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="rSX-fp-ra1">
+                                <rect key="frame" x="162.5" y="201" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="fUQ-6n-U8E"/>
+                                    <constraint firstAttribute="height" constant="50" id="iUE-7d-JH4"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -232,8 +239,10 @@
                             <constraint firstItem="fUj-b5-cbD" firstAttribute="centerX" secondItem="DqP-ss-RmY" secondAttribute="centerX" id="Glj-TC-rNb"/>
                             <constraint firstAttribute="bottom" secondItem="rav-FK-q5Q" secondAttribute="bottom" constant="-55" id="IcW-ao-xTW"/>
                             <constraint firstAttribute="trailing" secondItem="rav-FK-q5Q" secondAttribute="trailing" id="TjW-JI-mDd"/>
+                            <constraint firstItem="rSX-fp-ra1" firstAttribute="top" secondItem="4qj-qM-CqT" secondAttribute="bottom" constant="65.5" id="Uwo-T4-UVk"/>
                             <constraint firstItem="rav-FK-q5Q" firstAttribute="leading" secondItem="DqP-ss-RmY" secondAttribute="leading" id="Xm1-BD-lwX"/>
                             <constraint firstItem="4qj-qM-CqT" firstAttribute="top" secondItem="CGQ-Gk-Lp0" secondAttribute="bottom" id="ahY-Fy-ceZ"/>
+                            <constraint firstItem="rSX-fp-ra1" firstAttribute="centerX" secondItem="DqP-ss-RmY" secondAttribute="centerX" id="jHq-1w-WHu"/>
                             <constraint firstItem="CGQ-Gk-Lp0" firstAttribute="top" secondItem="DqP-ss-RmY" secondAttribute="top" constant="20" id="l0A-rS-be3"/>
                             <constraint firstItem="c8s-MG-jPM" firstAttribute="centerX" secondItem="DqP-ss-RmY" secondAttribute="centerX" id="lIE-jk-xaR"/>
                             <constraint firstItem="rav-FK-q5Q" firstAttribute="top" secondItem="aXZ-kQ-xjj" secondAttribute="bottom" id="liV-fK-qwL"/>
@@ -247,15 +256,19 @@
                     </view>
                     <navigationItem key="navigationItem" title="Session Info" id="IPp-Wz-oky"/>
                     <connections>
+                        <outlet property="loadingView" destination="rSX-fp-ra1" id="Bzs-gI-AsW"/>
                         <outlet property="sessionCodeLabel" destination="c8s-MG-jPM" id="Rei-go-n0c"/>
+                        <outlet property="sessionCodeSubLabel" destination="fUj-b5-cbD" id="qEZ-ze-ghM"/>
                         <outlet property="sessionCountLabel" destination="CGQ-Gk-Lp0" id="mN7-zP-ISw"/>
+                        <outlet property="sessionCountSubLabel" destination="4qj-qM-CqT" id="c2j-97-Cg0"/>
+                        <outlet property="startVoteButton" destination="aXZ-kQ-xjj" id="VfR-C5-dQ5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UyM-y3-qGH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="392.80000000000001" y="1460.4197901049477"/>
         </scene>
-        <!--Contract-->
+        <!--View Controller-->
         <scene sceneID="fLW-0h-SAb">
             <objects>
                 <viewController id="wrY-Ii-Tku" sceneMemberID="viewController">
@@ -325,7 +338,7 @@ As a result, all party members must smile and be grateful once the app makes the
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="k7s-cE-sHB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Contract" id="xBC-NS-Jza"/>
+                    <navigationItem key="navigationItem" id="xBC-NS-Jza"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="exc-zw-bWg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -654,6 +667,6 @@ As a result, all party members must smile and be grateful once the app makes the
         <image name="map-colour-400px" width="400" height="481"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bWI-yg-659"/>
+        <segue reference="cr6-OX-zUr"/>
     </inferredMetricsTieBreakers>
 </document>
