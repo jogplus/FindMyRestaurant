@@ -116,7 +116,7 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
 
             print("https://google.com/maps/place/\(self.fullAddress)")
             let hoursinfo = venue.value(forKey: "hours") as? NSDictionary
-            self.statusLabel.text = hoursinfo?.value(forKey: "status") as? String ?? "None"
+            self.statusLabel.text = hoursinfo?.value(forKey: "status") as? String ?? "Status Unknown"
             self.displayMapAtLatitude(latitude: Double(self.latitude), longitude: Double(self.longitude))
           //  let mapTitle: String = "Open \(self.restaurantNameLabel.text!) in Google Maps"
             self.linkLabel.setTitle("Open in Google Maps", for: .normal)
@@ -124,6 +124,13 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
             self.textViewLabel.isEditable = false
             self.textViewLabel.dataDetectorTypes = UIDataDetectorTypes.all
             self.zoomIntoLocation(lat: CLLocationDegrees(self.latitude), lng: CLLocationDegrees(self.longitude))
+            
+            if self.websiteUrl == "None"{
+                self.websiteButton.isHidden = true
+            }
+            if self.phoneNumber == "None"{
+                self.phoneClicked.isHidden = true
+            }
  
         }
     }
@@ -158,12 +165,20 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
         self.star4Image.image = UIImage(systemName: "star.fill");
         self.star5Image.image = UIImage(systemName: "star");
         }
-        else{
+        else if (self.ratingInt == 5){
         self.star1Image.image = UIImage(systemName: "star.fill");
         self.star2Image.image = UIImage(systemName: "star.fill");
         self.star3Image.image = UIImage(systemName: "star.fill");
         self.star4Image.image = UIImage(systemName: "star.fill");
         self.star5Image.image = UIImage(systemName: "star.fill");
+        }
+        else{
+            self.star1Image.isHidden = true
+            self.star2Image.isHidden = true
+            self.star3Image.isHidden = true
+            self.star4Image.isHidden = true
+            self.star5Image.isHidden = true
+            
         }
         
     }
