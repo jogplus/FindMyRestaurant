@@ -40,6 +40,7 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
     var ratingInt: Int = 0
     var websiteUrl:String = ""
     var phoneNumber: String = ""
+    var onlyAddress:String = ""
     
    // let apicall = "https://api.foursquare.com/v2/venues/542616e8498e7e2b1a06433d?client_id=0T5JYUXBZQEZN4KQWNE1150JUPO0BEQ3X2OPSUFBR3GTMVIK&client_secret=PPFXEGBT2CTUIP0ONYAAYOFERT2VQS510FLEPLWJ4HPVEWHC&v=20141020"
     
@@ -56,16 +57,33 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
             UIApplication.shared.open(urlClick, options: [:]) {_ in }
         }
     }
-    func zoomIntoLocation(){
-        let location = CLLocationCoordinate2D(latitude: CLLocationDegrees(self.latitude), longitude: CLLocationDegrees(self.longitude))
-//        let region = MKCoordinateRegion( center: location, latitudinalMeters: CLLocationDistance(exactly: 5000)!, longitudinalMeters: CLLocationDistance(exactly: 5000)!)
-//        mapView.setRegion(mapView.regionThatFits(region), animated: true)
-        
+    
+    func zoomIntoLocation(lat: CLLocationDegrees, lng: CLLocationDegrees){
         let annotation = MKPointAnnotation()
+        let location = CLLocationCoordinate2D(latitude: lat, longitude: lng)
         annotation.coordinate = location
         annotation.title = self.restaurantNameLabel.text
         mapView.addAnnotation(annotation)
+//        let mapSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+//
+//        let region = MKCoordinateRegion(center: location, span: mapSpan)
+//
+//        self.mapView.setRegion(region, animated: true)
         mapView.showAnnotations(mapView.annotations, animated: true)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?{
+        let reuseID = "annotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID)
+        if(annotationView == nil){
+            
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
+            
+            annotationView?.canShowCallout = true
+            annotationView?.leftCalloutAccessoryView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        }
+        
+        return annotationView
     }
     
     
@@ -76,37 +94,34 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
             
             self.restaurantNameLabel.text = venue.value(forKey: "name") as? String
             let contactInfo = venue.value(forKey: "contact") as? NSDictionary
-            self.phoneNumber = contactInfo?.value(forKey: "phone") as! String
+            self.phoneNumber = contactInfo?.value(forKey: "phone") as? String ?? "None"
             let locationInfo = venue.value(forKey: "location") as? NSDictionary
-            let addressArray = locationInfo?.value(forKey: "formattedAddress") as? Array<Any>
-            var addressString = addressArray?[0] as? String
+            self.onlyAddress = (locationInfo?.value(forKey: "address") as? String)!
+            self.onlyAddress += ", " + (locationInfo?.value(forKey: "city") as? String)!
+            self.onlyAddress += ", " + (locationInfo?.value(forKey: "state") as? String)!
+             self.onlyAddress += " " + (locationInfo?.value(forKey: "postalCode") as? String)!
+             self.onlyAddress += ", " + (locationInfo?.value(forKey: "country") as? String)!
             self.latitude = Float(truncating: (locationInfo?.value(forKey: "lat") as? NSNumber)!)
             self.longitude = Float(truncating: (locationInfo?.value(forKey: "lng") as? NSNumber)!)
-            self.ratings = Float(truncating: (venue.value(forKey: "rating") as? NSNumber)!)
-          //  self.ratingLabel.text = "Rating: \(self.ratings.description)"
-            self.websiteUrl = (venue.value(forKey: "url") as? String)!
-        //    self.websiteView.text = venue.value(forKey: "url") as? String
-            self.ratingInt = Int(self.ratings/2.0)
+            self.ratings = Float(truncating: venue.value(forKey: "rating") as? NSNumber ??  0.0)
+       //     self.ratings = Float(truncating: (venue.value(forKey: "rating") as? NSNumber)!)
+            self.websiteUrl = (venue.value(forKey: "url") as? String) ?? "None"
+            let roundedNum = round(self.ratings)
+            self.ratingInt = Int( roundedNum / 2.0)
             print(self.ratingInt)
             self.starRating()
 
-
-            addressString! += ", " + (addressArray?[1] as? String)!
-            addressString! += ", " + (addressArray?[2] as? String)!
-        //    self.locationLabel.text = addressString
-            self.fullAddress = addressString!
             print("https://google.com/maps/place/\(self.fullAddress)")
             let hoursinfo = venue.value(forKey: "hours") as? NSDictionary
-            self.statusLabel.text = hoursinfo?.value(forKey: "status") as? String
+            self.statusLabel.text = hoursinfo?.value(forKey: "status") as? String ?? "None"
             self.displayMapAtLatitude(latitude: Double(self.latitude), longitude: Double(self.longitude))
           //  let mapTitle: String = "Open \(self.restaurantNameLabel.text!) in Google Maps"
             self.linkLabel.setTitle("Open in Google Maps", for: .normal)
-            self.textViewLabel.text = self.fullAddress
-            self.textViewLabel.isEditable = false;
-            self.textViewLabel.dataDetectorTypes = UIDataDetectorTypes.all;
-       //     self.websiteView.isEditable = false;
-       //     self.websiteView.dataDetectorTypes = UIDataDetectorTypes.all;
-   
+            self.textViewLabel.text = self.onlyAddress
+            self.textViewLabel.isEditable = false
+            self.textViewLabel.dataDetectorTypes = UIDataDetectorTypes.all
+            self.zoomIntoLocation(lat: CLLocationDegrees(self.latitude), lng: CLLocationDegrees(self.longitude))
+ 
         }
     }
     
@@ -150,11 +165,12 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
         
     }
     
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadVenueDetails()
-        zoomIntoLocation()
+        mapView.delegate = self as MKMapViewDelegate
             
     }
     @IBAction func onLinkClick(_ sender: Any) {
@@ -163,10 +179,7 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
            }
        }
 
-//            func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-//                UIApplication.shared.open(URL)
-//                return false
-//            }
+
     
     func displayMapAtLatitude(latitude: Double, longitude: Double) {
         var region = mapView.region
