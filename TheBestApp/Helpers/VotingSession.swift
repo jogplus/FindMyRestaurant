@@ -22,6 +22,7 @@ class VotingSession {
         session.username = String(code)
         session.password = String(code)
         session["userCount"] = 1
+        session["canVote"] = false
         session.signUpInBackground {(success, error) in
             if success {
                 VotingSession.sessionCreater = true
@@ -84,18 +85,6 @@ class VotingSession {
                     return
                 }
             }
-            
-
-//              "id": "52af3a7c3cf9994f4e043bed",
-//              "name": "Cantonese Restaurant",
-//              "pluralName": "Cantonese Restaurants",
-//              "shortName": "Cantonese",
-//              "icon": {
-//                "prefix": "https://ss3.4sqi.net/img/categories_v2/food/asian_",
-//                "suffix": ".png"
-//              },
-//              "primary": true
-//            }
         }
         
         closure(true, nil)
@@ -108,6 +97,19 @@ class VotingSession {
         query.findObjectsInBackground { (categories, error) in
             closure(categories, error)
         }
+    }
+    
+    static func startSessionVoting(closure: @escaping (
+        Bool, Error?) -> Void) {
+        PFUser.current()!.setObject(true, forKey: "canVote")
+        PFUser.current()!.saveInBackground {(success, error) in
+           closure(success, error)
+        }
+    }
+    
+    static func canVote() -> Bool {
+        let session = PFUser.current()!
+        return session["canVote"] as! Bool
     }
     
     static func getSessionId() -> String {

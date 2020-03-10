@@ -67,7 +67,17 @@ class InfoSessionViewController: UIViewController {
         sessionCountLabel.text = String(format: "%@", VotingSession.getUserCount())
     }
     
-
+    @IBAction func beginVoting(_ sender: Any) {
+        VotingSession.startSessionVoting{ (success, error) in
+            if success {
+                print("voting is starting")
+                self.performSegue(withIdentifier: "CreatorBeginVoting", sender: nil)
+            } else {
+                print("there was and error\(String(describing: error))")
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -202,7 +202,8 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="10"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="wrY-Ii-Tku" kind="show" id="cr6-OX-zUr"/>
+                                    <action selector="beginVoting:" destination="eYE-vc-BfH" eventType="touchUpInside" id="xP9-pg-Fyx"/>
+                                    <segue destination="wrY-Ii-Tku" kind="show" identifier="CreatorBeginVoting" id="cr6-OX-zUr"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drawkit-phone-conversation-colour-1200px" translatesAutoresizingMaskIntoConstraints="NO" id="rav-FK-q5Q">
@@ -620,7 +621,7 @@ As a result, all party members must smile and be grateful once the app makes the
                     <navigationItem key="navigationItem" title="Waiting To Start" id="tp4-As-7YE"/>
                     <connections>
                         <outlet property="sessionCountLabel" destination="C7e-HS-Zwc" id="WcE-Ry-BEj"/>
-                        <segue destination="wrY-Ii-Tku" kind="show" id="bWI-yg-659"/>
+                        <segue destination="wrY-Ii-Tku" kind="show" identifier="JoinerBeginVoting" id="bWI-yg-659"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V1a-Dt-83A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
