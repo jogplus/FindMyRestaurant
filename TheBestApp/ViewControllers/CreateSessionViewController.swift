@@ -23,6 +23,8 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
 //    fileprivate let locationManager: CLLocationManager = CLLocationManager()
     var locationManager = CLLocationManager()
     
+    var locationStatus: CLAuthorizationStatus!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,14 +32,15 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
         createSessionButton.isHidden = true
         
 //        overlayView.clipsToBounds = true
-        overlayView.layer.cornerRadius = 10
+        overlayView.layer.cornerRadius = 20
+//        overlayView.layer.shadowColor = UIColor.black.cgColor
+//        overlayView.layer.shadowOpacity = 0.1
+//        overlayView.layer.shadowOffset = CGSize(width: 0, height: -8)
+//        overlayView.layer.shadowRadius = 1
+//        overlayView.layer.shouldRasterize = true
+//        overlayView.layer.rasterizationScale = UIScreen.main.scale
         overlayView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner] // Top right corner, Top left corner respectively
-        overlayView.layer.shadowColor = UIColor.black.cgColor
-        overlayView.layer.shadowOpacity = 0.5
-        overlayView.layer.shadowOffset = .zero
-        overlayView.layer.shadowRadius = 5
-        overlayView.layer.shouldRasterize = true
-        overlayView.layer.rasterizationScale = UIScreen.main.scale
+
         
         // set intitial location
         mapView.delegate = self
@@ -54,6 +57,7 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        locationStatus = status
         switch status {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
@@ -72,11 +76,13 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        showCircle()
-        instructionLabel.text = "Setup the search radius and price range:"
-        loadingView.isHidden = true
-        priceSegment.isHidden = false
-        createSessionButton.isHidden = false
+        if locationStatus == .authorizedWhenInUse || locationStatus == .authorizedAlways {
+            showCircle()
+            instructionLabel.text = "Setup the search radius and price range:"
+            loadingView.isHidden = true
+            priceSegment.isHidden = false
+            createSessionButton.isHidden = false
+        }
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {

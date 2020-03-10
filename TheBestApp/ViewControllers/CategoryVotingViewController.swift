@@ -59,7 +59,7 @@ class CategoryVotingViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
         
-        cell.contentView.backgroundColor = UIColor(white: 0.95, alpha: 1)
+//        cell.contentView.backgroundColor = UIColor(white: 0.95, alpha: 1)
         
         let categoryDict = categoryArray[indexPath.row]
         cell.categoryLabelView.text = categoryDict["shortName"] as? String
@@ -67,6 +67,8 @@ class CategoryVotingViewController: UIViewController, UITableViewDelegate, UITab
         let iconURL = URL(string: categoryDict["iconURL"] as! String)
         
         cell.categoryImageView.af.setImage(withURL: iconURL!)
+        cell.categoryImageView.backgroundColor = UIColor.systemBlue
+        cell.categoryImageView.layer.cornerRadius = 12
         
         return cell
     }
