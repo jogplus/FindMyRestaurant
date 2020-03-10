@@ -29,7 +29,10 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
     @IBOutlet weak var websiteButton: UIButton!
     @IBOutlet weak var phoneClicked: UIButton!
     
-  
+    @IBAction func backToHomeOnPress(_ sender: Any) {
+        self.performSegue(withIdentifier: "backToHomeSegue", sender: nil)
+    }
+    
     
     //   @IBOutlet var linkView: UITextView!
     var ratings: Float = 0.0
@@ -141,7 +144,8 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
     override func viewDidLoad() {
         super.viewDidLoad()
         loadVenueDetails()
-            
+//        websiteButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentFill
+//        phoneClicked.contentHorizontalAlignment = UI
     }
     @IBAction func onLinkClick(_ sender: Any) {
         if let urlClick = URL(string: "https://maps.google.com/maps?q="+(self.latitude.description) + "," + (self.longitude.description)){
