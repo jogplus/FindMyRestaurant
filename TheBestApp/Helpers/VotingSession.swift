@@ -23,7 +23,6 @@ class VotingSession {
         session.password = String(code)
         session["userCount"] = 1
         session["canVote"] = false
-        session["finalRestaurant"] = ""
         session.signUpInBackground {(success, error) in
             if success {
                 VotingSession.sessionCreater = true
@@ -136,24 +135,50 @@ class VotingSession {
         return PFUser.current()!.username!
     }
     
-    static func saveFinalRestaurant(restaurantId: String, closure: @escaping (
+    static func saveFinalRestaurant(restaurantDict: NSDictionary, closure: @escaping (
     Bool, Error?) -> Void) {
-        print(restaurantId)
-        PFUser.current()!.setObject(restaurantId, forKey: "finalRestaurant")
-        PFUser.current()!.saveInBackground {(success, error) in
-           closure(success, error)
+        print(restaurantDict)
+        
+        let finalRestaurant = PFObject(className: "Restaurant")
+        finalRestaurant["sessionId"] = PFUser.current()!
+        finalRestaurant["venue"] = restaurantDict
+        
+        finalRestaurant.saveInBackground { (success, error) in
+                closure(success, error)
         }
+        
+        
+//        PFUser.current()!.setObject(restaurantId, forKey: "finalRestaurant")
+//        PFUser.current()!.saveInBackground {(success, error) in
+//           closure(success, error)
+//        }
     }
     
-    static func getFinalRestaurant() -> String? {
-        let session = PFUser.current()!
-        session.fetchInBackground()
+    
+    
+    static func getFinalRestaurant(closure: @escaping (
+    NSDictionary?) -> Void) {
+        let query = PFQuery(className: "Restaurant")
+        query.whereKey("sessionId", equalTo: PFUser.current()!)
         
-        if session["finalRestaurant"] as! String == "" {
-            return nil
+        query.findObjectsInBackground { (restaurant, error) in
+            var restaurantDict : NSDictionary!
+            if restaurant != nil {
+                let restaurantObj = restaurant![0]
+                restaurantDict = restaurantObj["venue"] as? NSDictionary
+            }
+            
+            closure(restaurantDict)
         }
         
-        return session["finalRestaurant"] as? String
+//        let session = PFUser.current()!
+//        session.fetchInBackground()
+//
+//        if session["finalRestaurant"] as! String == "" {
+//            return nil
+//        }
+//
+//        return session["finalRestaurant"] as? String
     }
     
     static func getRemainingCategories(closure: @escaping ([String]?, Error?) -> Void) {

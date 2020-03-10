@@ -69,14 +69,18 @@ class WaitingViewController: UIViewController {
                                 
                                 let finalRestaurant = restaurants.randomElement()
                                 let finalRestaurantId = finalRestaurant?.value(forKey: "id")
-                                VotingSession.saveFinalRestaurant(restaurantId: finalRestaurantId as! String) { (success, error) in
-                                    if success {
-                                        print("we picked a restaurant")
-                                        self.performSegue(withIdentifier: "FinalRestaurantSeg", sender: nil)
-                                    } else {
-                                        print("there was an error \(String(describing: error))")
+                                
+                                SquareClient.fetchRestaurantInfo(restaurantId: finalRestaurantId as! String) { (finalRestaurantDict) in
+                                    VotingSession.saveFinalRestaurant(restaurantDict: finalRestaurantDict as! NSDictionary) { (success, error) in
+                                        if success {
+                                            print("we picked a restaurant")
+                                            self.performSegue(withIdentifier: "FinalRestaurantSeg", sender: nil)
+                                        } else {
+                                            print("there was an error \(String(describing: error))")
+                                        }
                                     }
                                 }
+                                
                             }
                             
                         }
@@ -89,8 +93,10 @@ class WaitingViewController: UIViewController {
     }
     
     @objc func restaurantFound() {
-        if VotingSession.getFinalRestaurant() != nil {
-            self.performSegue(withIdentifier: "FinalRestaurantSeg", sender: nil)
+        VotingSession.getFinalRestaurant { (restaurant) in
+            if restaurant != nil {
+                self.performSegue(withIdentifier: "FinalRestaurantSeg", sender: nil)
+            }
         }
     }
     
