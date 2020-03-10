@@ -70,7 +70,8 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
     
     
     func loadVenueDetails(){
-        SquareClient.fetchRestaurantInfo(restaurantId: VotingSession.getFinalRestaurant()!){
+        let finalResaurant = VotingSession.getFinalRestaurant()!
+        SquareClient.fetchRestaurantInfo(restaurantId: finalResaurant){
              (venue) in
             
             self.restaurantNameLabel.text = venue.value(forKey: "name") as? String

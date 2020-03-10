@@ -138,6 +138,7 @@ class VotingSession {
     
     static func saveFinalRestaurant(restaurantId: String, closure: @escaping (
     Bool, Error?) -> Void) {
+        print(restaurantId)
         PFUser.current()!.setObject(restaurantId, forKey: "finalRestaurant")
         PFUser.current()!.saveInBackground {(success, error) in
            closure(success, error)
@@ -146,6 +147,8 @@ class VotingSession {
     
     static func getFinalRestaurant() -> String? {
         let session = PFUser.current()!
+        session.fetchInBackground()
+        
         if session["finalRestaurant"] as! String == "" {
             return nil
         }

@@ -56,23 +56,34 @@ class WaitingViewController: UIViewController {
     }
     
     @objc func votesFinished() {
-        VotingSession.getRemainingCategories { (categories, error) in
-            if categories != nil {
-                SquareClient.fetchRestaurants(location: VotingSession.location, radius: VotingSession.radius, categories: categories! as NSArray) { (restaurants) in
-                    
-                    let finalRestaurant = restaurants.randomElement()
-                    let finalRestaurantId = finalRestaurant?.value(forKey: "id")
-                    VotingSession.saveFinalRestaurant(restaurantId: finalRestaurantId as! String) { (success, error) in
-                        if success {
-                            print("we picked a restaurant")
-                        } else {
-                            print("there was an error \(String(describing: error))")
+        VotingSession.getVotes { (votes, error) in
+            if votes != nil && votes!.count >= Int(truncating: VotingSession.getUserCount()) {
+                VotingSession.getRemainingCategories { (categories, error) in
+                    print(categories)
+                    if categories != nil {
+                        print("getting rest")
+                        SquareClient.fetchRestaurants(location: VotingSession.location, radius: VotingSession.radius, categories: categories! as NSArray) { (restaurants) in
+                            print(restaurants)
+                            if restaurants.count > 0 {
+                                print(restaurants)
+                                
+                                let finalRestaurant = restaurants.randomElement()
+                                let finalRestaurantId = finalRestaurant?.value(forKey: "id")
+                                VotingSession.saveFinalRestaurant(restaurantId: finalRestaurantId as! String) { (success, error) in
+                                    if success {
+                                        print("we picked a restaurant")
+                                        self.performSegue(withIdentifier: "FinalRestaurantSeg", sender: nil)
+                                    } else {
+                                        print("there was an error \(String(describing: error))")
+                                    }
+                                }
+                            }
+                            
                         }
+                    } else {
+                        print("there was an error: \(String(describing: error))")
                     }
                 }
-                self.performSegue(withIdentifier: "FinalRestaurantSeg", sender: nil)
-            } else {
-                print("there was an error: \(String(describing: error))")
             }
         }
     }
