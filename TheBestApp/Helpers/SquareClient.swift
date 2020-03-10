@@ -24,7 +24,7 @@ class SquareClient {
         SquareClient.AUTH_QUERY_STRING = "client_id=\(SquareClient.CLIENT_ID)&client_secret=\(SquareClient.CLIENT_SECRET)&v=20141020&"
     }
     
-    static func fetchCategories(location: CLLocation, radius: CLLocationDistance, closure: @escaping ([NSDictionary]) -> Void) {
+    static func fetchCategories(location: CLLocation, radius: CLLocationDistance, price: Int, closure: @escaping ([NSDictionary]) -> Void) {
         let queryParams = SquareClient.AUTH_QUERY_STRING +  "ll=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=\(Int(radius))&query=restaurant"
 
         let url = URL(string: SquareClient.SEARCH_ENDPOINT + queryParams.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
