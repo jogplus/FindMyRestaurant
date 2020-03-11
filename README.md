@@ -1,31 +1,34 @@
 # Find my Restaurant
 
 ## Table of Contents
+
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
-2. [Schema](#Schema)
+1. [Schema](#Schema)
 
 ## Overview
+
 ### Description
-This app helps groups of friends find a restaurant when they cannot agree on one. 
-Once setting a radius of restaurants, each friend gets one veto based on restaurant genre. 
+
+This app helps groups of friends find a restaurant when they cannot agree on one.
+Once setting a radius of restaurants, each friend gets one veto based on restaurant genre.
 After accepting the terms to the "no-backsies" agreement, a restaurant is chosen that is within the radius and does not violate the vetos.
 
 ### App Evaluation
-[Evaluation of your app across the following attributes]
+
 - **Category:**
-Restaurant, Food
+  Restaurant, Food
 - **Mobile:**
-This app is mainly meant for mobile users as it is supposed to be accessible no matter where you are. 
+  This app is mainly meant for mobile users as it is supposed to be accessible no matter where you are.
 - **Story:**
-Analyzes users food and restaurant choices and analyzes them to find the perfect restaurant that fits everyones' demands. 
+  Analyzes users food and restaurant choices and analyzes them to find the perfect restaurant that fits everyones' demands.
 - **Market:**
-Anyone can use this app. For instance, if you are planning a family dinner, or want to go out with a group of friends.
+  Anyone can use this app. For instance, if you are planning a family dinner, or want to go out with a group of friends.
 - **Habit:**
-Friends who are trying to find a place to eat.
+  Friends who are trying to find a place to eat.
 - **Scope:**
-Young adults.
+  Young adults.
 
 ## Product Spec
 
@@ -33,59 +36,79 @@ Young adults.
 
 **Required Must-have Stories**
 
-User either creates or joins a session that has already been started. If you create, you are given a session or a QR code that your friends can use. If you join, you have to enter a session code to enter.
+- User either creates or joins a session.
+- Session creator sets the radius to search for restaurants
+- Session joiners can join the session using the sessionId
+- Users can vote for the categories that they do not want to got to
+- Users are presented with a restaurant that is randomly selected from the remaining categories
 
 **Optional Nice-to-have Stories**
 
-Allows them to make an account so that they could see their previous searches and results.
+- Allows them to make an account so that they could see their previous searches and results.
 
 ### 2. Screen Archetypes
 
-Create
-Join
-Screen with the session or QR code
-Screen where you input the session code
-Screen with a map that lets you decide the radius of your search
-Screen that lets you enter categories/options of restaurants/food you want
-Screen that shows the result on the map and also gives a small description
+- Create
+- Join
+- Screen with the sessionId or QR code
+- Screen where you input the session code
+- Screen with a map that lets you decide the radius of your search
+- Screen that lets you enter categories/options of food you don't want
+- Screen that shows the result on the map and also gives a small description
 
 ### 3. Navigation
-
-**Tab Navigation** (Tab to Screen)
-None
 
 **Flow Navigation** (Screen to Screen)
 
 Starting screen
-  - either choose create or join
- 
- If create 
-  - navigates to the screen with the session code
-  
- If join
-  - navigates to the screen with an input box to put session code
-  
- After creating
-   - navigates to the screen with a map to select the radius of search
-   
-  After joining
-    - navigates to the screen that lets you include categories on the types of food you want
-    
-  End screen
-    - After choosing options and categories, it takes you to the end screen which shows a map with a chosen restaurant and its descrioption
+
+- Choose to create or join a session
+
+Session Setup Screen
+
+- Navigate to the screen that allows the session creator to set the radius of desired restaurants
+
+Create Screen
+
+- Navigates to the screen with the sessionId others use to join
+
+Join Screen
+
+- Navigates to the screen with an input box to put sessionId
+
+After joining
+
+- Navigates to the screen that lets you include categories on the types of food you don't
+
+End screen
+
+- After choosing options and categories, it takes you to the end screen which shows a map with a chosen restaurant and its description
+
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
+
 <img src="https://i.imgur.com/cSNEXAE.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 
+<img src="https://imgur.com/B9H2SFm.png" width=600>
+<img src="https://imgur.com/TA0UjF8.png" width=600>
+
 ### [BONUS] Interactive Prototype
 
-## Schema 
-[This section will be completed in Unit 9]
+<img src="http://g.recordit.co/1buisvMUee.gif" width=600>
+
+## Schema
+
 ### Models
-[Add table of models]
+
+<b>Session</b>(<u>id</u>, userCount, canVote)
+<b>Category</b>(<u>sessionId</u>, <u>categoryId</u>, name, pluralName, shortName, iconURL)
+<b>Vote</b>(<u>sessionId</u>, <u>categoryId</u>)
+<b>Restaurant</b>(<u>sessionId</u>, <u>venue</u>)
+
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+
+#### FourSqaure API
+
+- GET https://api.foursquare.com/v2/venues/search
+- GET https://api.foursquare.com/v2/venues/VENUE_ID
