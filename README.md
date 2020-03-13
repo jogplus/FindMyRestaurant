@@ -95,7 +95,11 @@ End screen
 
 ### [BONUS] Interactive Prototype
 
-<img src="http://g.recordit.co/1buisvMUee.gif" width=600>
+<img src="http://g.recordit.co/1buisvMUee.gif" width=250>
+
+## Final Demo
+
+<img src="https://i.imgur.com/REBVGqt.gif" width=250><img src="https://i.imgur.com/HqCg1hS.gif" width=250>
 
 ## Schema
 
