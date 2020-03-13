@@ -101,10 +101,10 @@ End screen
 
 ### Models
 
-<b>Session</b>(<u>id</u>, userCount, canVote)
-<b>Category</b>(<u>sessionId</u>, <u>categoryId</u>, name, pluralName, shortName, iconURL)
-<b>Vote</b>(<u>sessionId</u>, <u>categoryId</u>)
-<b>Restaurant</b>(<u>sessionId</u>, <u>venue</u>)
+- <b>Session</b>(<u>id</u>, userCount, canVote)
+- <b>Category</b>(<u>sessionId</u>, <u>categoryId</u>, name, pluralName, shortName, iconURL)
+- <b>Vote</b>(<u>sessionId</u>, <u>categoryId</u>)
+- <b>Restaurant</b>(<u>sessionId</u>, <u>venue</u>)
 
 ### Networking
 
