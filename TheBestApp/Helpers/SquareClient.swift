@@ -15,7 +15,7 @@ class SquareClient {
     
     static var AUTH_QUERY_STRING = ""
     static let BASE_URL = "https://api.foursquare.com/v2/venues"
-    static let SEARCH_ENDPOINT = "\(SquareClient.BASE_URL)/search?"
+    static let SEARCH_ENDPOINT = "\(SquareClient.BASE_URL)/explore?"
     
     static func initialize(clientId: String, clientSecret: String) {
         SquareClient.CLIENT_ID = clientId
@@ -25,9 +25,15 @@ class SquareClient {
     }
     
     static func fetchCategories(location: CLLocation, radius: CLLocationDistance, price: Int, closure: @escaping ([NSDictionary]) -> Void) {
-        let queryParams = SquareClient.AUTH_QUERY_STRING +  "ll=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=\(Int(radius))&query=restaurant"
+        let queryParams = SquareClient.AUTH_QUERY_STRING + "ll=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=\(Int(radius))&openNow=1&section=food&price=\(price + 1)"
+        
+        
+//        "ll=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=\(Int(radius))&query=restaurant"
+
 
         let url = URL(string: SquareClient.SEARCH_ENDPOINT + queryParams.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
+        
+        print(url)
        
         let request = URLRequest(url: url)
 
@@ -43,10 +49,16 @@ class SquareClient {
                     if let responseDictionary = try! JSONSerialization.jsonObject(
                         with: data, options:[]) as? NSDictionary {
 //                            NSLog("response: \(responseDictionary)")
-                        let restaurants = responseDictionary.value(forKeyPath: "response.venues") as! NSArray
+                        let group = (responseDictionary.value(forKeyPath: "response.groups") as! [NSDictionary])[0]
+                        let restaurantsArray = group.value(forKey: "items") as! [NSDictionary]
+                        
+                        var restaurants = [NSDictionary]()
+                        for restaurant in restaurantsArray {
+                            restaurants.append(restaurant.value(forKey: "venue") as! NSDictionary)
+                        }
                         
                         var categoriesSet : Dictionary = Dictionary<String, Any>()
-                        for restaurant in restaurants as! [NSDictionary] {
+                        for restaurant in restaurants {
                             
                             let categories = restaurant.value(forKeyPath: "categories")
                             
@@ -68,15 +80,18 @@ class SquareClient {
         task.resume()
     }
     
-    static func fetchRestaurants(location: CLLocation, radius: CLLocationDistance, categories: NSArray, closure: @escaping ([NSDictionary]) -> Void) {
+    static func fetchRestaurants(location: CLLocation, radius: CLLocationDistance, price: Int, categories: NSArray, closure: @escaping ([NSDictionary]) -> Void) {
         
-        var queryParams = SquareClient.AUTH_QUERY_STRING +  "ll=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=\(Int(radius))&categoryId="
+        var queryParams = SquareClient.AUTH_QUERY_STRING + "ll=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=\(Int(radius))&openNow=1&section=food&price=\(price + 1)&categoryId="
         
         for category in categories {
             queryParams += category as! String + ","
         }
 
         let url = URL(string: SquareClient.SEARCH_ENDPOINT + queryParams.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
+        
+        print(url)
+        
         
         let request = URLRequest(url: url)
 
@@ -91,10 +106,13 @@ class SquareClient {
                 if let data = dataOrNil {
                     if let responseDictionary = try! JSONSerialization.jsonObject(
                         with: data, options:[]) as? NSDictionary {
-                        print(responseDictionary)
-                        let restaurants = responseDictionary.value(forKeyPath: "response.venues") as! [NSDictionary]
+                        let group = (responseDictionary.value(forKeyPath: "response.groups") as! [NSDictionary])[0]
+                        let restaurantsArray = group.value(forKey: "items") as! [NSDictionary]
                         
-                        print(restaurants)
+                        var restaurants = [NSDictionary]()
+                        for restaurant in restaurantsArray {
+                            restaurants.append(restaurant.value(forKey: "venue") as! NSDictionary)
+                        }
                         
                         closure(restaurants)
                     }
@@ -122,7 +140,6 @@ class SquareClient {
                     if let responseDictionary = try! JSONSerialization.jsonObject(
                         with: data, options:[]) as? NSDictionary {
                         
-                        print(responseDictionary)
                         
                         let restaurant = responseDictionary.value(forKeyPath: "response.venue") as! NSDictionary
                         closure(restaurant)

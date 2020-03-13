@@ -22,40 +22,47 @@ class InfoSessionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sessionCodeLabel.isHidden = true
-        sessionCountLabel.isHidden = true
-        sessionCodeSubLabel.isHidden = true
-        sessionCountSubLabel.isHidden = true
-        startVoteButton.isHidden = true
-        loadingView.isHidden = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         
-        VotingSession.createSession { (success, error) in
-            if success {
-                self.sessionCodeLabel.text = VotingSession.getSessionId()
-                self.sessionCodeLabel.isHidden = false
-                self.sessionCountLabel.isHidden = false
-                self.sessionCodeSubLabel.isHidden = false
-                self.sessionCountSubLabel.isHidden = false
-                self.startVoteButton.isHidden = false
-                self.loadingView.isHidden = true
-                self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateUserCount), userInfo: nil, repeats: true)
-                                
-                SquareClient.fetchCategories(location: VotingSession.location, radius: VotingSession.radius, price: VotingSession.price) { (categories) in
-                    VotingSession.saveSessionCategories(categories: categories) { (success, error) in
-                        if success {
-                            print("it did work")
-                        } else {
-                            print("no it did not work")
+        if VotingSession.loadedCategories == false {
+            
+            sessionCodeLabel.isHidden = true
+            sessionCountLabel.isHidden = true
+            sessionCodeSubLabel.isHidden = true
+            sessionCountSubLabel.isHidden = true
+            startVoteButton.isHidden = true
+            loadingView.isHidden = false
+            
+            VotingSession.createSession { (success, error) in
+                if success {
+                    self.sessionCodeLabel.text = VotingSession.getSessionId()
+                    self.sessionCodeLabel.isHidden = false
+                    self.sessionCountLabel.isHidden = false
+                    self.sessionCodeSubLabel.isHidden = false
+                    self.sessionCountSubLabel.isHidden = false
+                    self.startVoteButton.isHidden = false
+                    self.loadingView.isHidden = true
+                    self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateUserCount), userInfo: nil, repeats: true)
+                    
+                    VotingSession.loadedCategories = true
+                                    
+                    SquareClient.fetchCategories(location: VotingSession.location, radius: VotingSession.radius, price: VotingSession.price) { (categories) in
+                        VotingSession.saveSessionCategories(categories: categories) { (success, error) in
+                            if success {
+                                print("it did work")
+                            } else {
+                                print("no it did not work")
+                            }
                         }
                     }
                 }
-            }
-            else {
-                print("Error: \(error?.localizedDescription ?? "bad news")")
+                else {
+                    print("Error: \(error?.localizedDescription ?? "bad news")")
+                }
             }
         }
-        
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -12,7 +12,8 @@ import MapKit
 
 class VotingSession {
     static var sessionCreater: Bool = false
-    static var price: Int = -1
+    static var loadedCategories: Bool = false
+    static var price: Int = 0
     static var radius: CLLocationDistance = 0
     static var location: CLLocation = CLLocation()
     
@@ -137,7 +138,6 @@ class VotingSession {
     
     static func saveFinalRestaurant(restaurantDict: NSDictionary, closure: @escaping (
     Bool, Error?) -> Void) {
-        print(restaurantDict)
         
         let finalRestaurant = PFObject(className: "Restaurant")
         finalRestaurant["sessionId"] = PFUser.current()!
@@ -200,6 +200,8 @@ class VotingSession {
                                 remainingCategories.append(catId)
                             }
                         }
+                        
+                        print(remainingCategories)
                         
                         closure(remainingCategories, error)
                     } else {

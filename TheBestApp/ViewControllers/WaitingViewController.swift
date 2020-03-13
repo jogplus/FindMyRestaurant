@@ -59,13 +59,10 @@ class WaitingViewController: UIViewController {
         VotingSession.getVotes { (votes, error) in
             if votes != nil && votes!.count >= Int(truncating: VotingSession.getUserCount()) {
                 VotingSession.getRemainingCategories { (categories, error) in
-                    print(categories)
                     if categories != nil {
                         print("getting rest")
-                        SquareClient.fetchRestaurants(location: VotingSession.location, radius: VotingSession.radius, categories: categories! as NSArray) { (restaurants) in
-                            print(restaurants)
+                        SquareClient.fetchRestaurants(location: VotingSession.location, radius: VotingSession.radius, price: VotingSession.price, categories: categories! as NSArray) { (restaurants) in
                             if restaurants.count > 0 {
-                                print(restaurants)
                                 
                                 let finalRestaurant = restaurants.randomElement()
                                 let finalRestaurantId = finalRestaurant?.value(forKey: "id")

@@ -125,6 +125,7 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
     }
     
     @IBAction func startSession(_ sender: Any) {
+        VotingSession.loadedCategories = false
         self.performSegue(withIdentifier: "sessionHostSegue", sender: nil)
     }
     
