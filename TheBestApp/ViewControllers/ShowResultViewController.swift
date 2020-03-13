@@ -80,9 +80,24 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
     }
     
     
+    func everythinghidden(){
+        self.websiteButton.isHidden = true
+        self.phoneClicked.isHidden = true
+        self.restaurantNameLabel.isHidden = true
+        self.statusLabel.isHidden = true
+        self.linkLabel.isHidden = true
+        self.textViewLabel.isHidden = true
+        self.star1Image.isHidden = true
+        self.star2Image.isHidden = true
+        self.star3Image.isHidden = true
+        self.star4Image.isHidden = true
+        self.star5Image.isHidden = true
+        loadingView.isHidden = false
+    }
+    
     func loadVenueDetails(){
         VotingSession.getFinalRestaurant() { (venue) in
-            self.restaurantNameLabel.text = venue!.value(forKey: "name") as? String
+            self.restaurantNameLabel.text = venue!.value(forKey: "name") as? String ?? "None"
             let contactInfo = venue!.value(forKey: "contact") as? NSDictionary
             self.phoneNumber = contactInfo?.value(forKey: "phone") as? String ?? "None"
             let locationInfo = venue!.value(forKey: "location") as? NSDictionary
@@ -98,7 +113,6 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
             let roundedNum = round(self.ratings)
             self.ratingInt = Int( roundedNum / 2.0)
             self.starRating()
-
             let hoursinfo = venue!.value(forKey: "hours") as? NSDictionary
             self.statusLabel.text = hoursinfo?.value(forKey: "status") as? String ?? "Hours Unknown"
             self.displayMapAtLatitude(latitude: Double(self.latitude), longitude: Double(self.longitude))
@@ -107,27 +121,30 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
             self.textViewLabel.isEditable = false
             self.textViewLabel.dataDetectorTypes = UIDataDetectorTypes.all
             self.zoomIntoLocation(lat: CLLocationDegrees(self.latitude), lng: CLLocationDegrees(self.longitude))
-
-            if self.websiteUrl == "None"{
-               self.websiteButton.isHidden = true
+            
+            self.loadingView.isHidden = true
+            self.statusLabel.isHidden = false
+            self.restaurantNameLabel.isHidden = false
+            self.textViewLabel.isHidden = false
+            self.linkLabel.isHidden = false
+            if self.websiteUrl != "None"{
+               self.websiteButton.isHidden = false
             }
-            if self.phoneNumber == "None"{
-               self.phoneClicked.isHidden = true
+            if self.phoneNumber != "None"{
+               self.phoneClicked.isHidden = false
             }
         }
     }
     
     
     func starRating(){
-        if (self.ratingInt < 1){
-            self.star1Image.isHidden = true
-            self.star2Image.isHidden = true
-            self.star3Image.isHidden = true
-            self.star4Image.isHidden = true
-            self.star5Image.isHidden = true
-        }
         if (self.ratingInt >= 1){
             self.star1Image.image = UIImage(systemName: "star.fill");
+            self.star1Image.isHidden = false
+            self.star2Image.isHidden = false
+            self.star3Image.isHidden = false
+            self.star4Image.isHidden = false
+            self.star5Image.isHidden = false
         }
         if (self.ratingInt >= 2){
             self.star2Image.image = UIImage(systemName: "star.fill");
@@ -144,8 +161,11 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
     }
  
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        everythinghidden()
         loadVenueDetails()
         mapView.delegate = self as MKMapViewDelegate
     }
