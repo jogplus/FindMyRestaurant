@@ -32,8 +32,6 @@ class SquareClient {
 
 
         let url = URL(string: SquareClient.SEARCH_ENDPOINT + queryParams.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
-        
-        print(url)
        
         let request = URLRequest(url: url)
 
@@ -90,8 +88,6 @@ class SquareClient {
 
         let url = URL(string: SquareClient.SEARCH_ENDPOINT + queryParams.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
         
-        print(url)
-        
         
         let request = URLRequest(url: url)
 
@@ -122,7 +118,7 @@ class SquareClient {
     }
     
     
-    static func fetchRestaurantInfo(restaurantId: String, closure: @escaping (NSDictionary) -> Void) {
+    static func fetchRestaurantInfo(restaurantId: String, closure: @escaping (NSDictionary?) -> Void) {
         
         let url = URL(string: SquareClient.BASE_URL + "/\(restaurantId)?" + SquareClient.AUTH_QUERY_STRING.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)!
         
@@ -141,7 +137,7 @@ class SquareClient {
                         with: data, options:[]) as? NSDictionary {
                         
                         
-                        let restaurant = responseDictionary.value(forKeyPath: "response.venue") as! NSDictionary
+                        let restaurant = responseDictionary.value(forKeyPath: "response.venue") as? NSDictionary
                         closure(restaurant)
                     }
                 }

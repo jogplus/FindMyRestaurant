@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2C29F1A9240EF68700A3B182"
-               BuildableName = "TheBestApp.app"
-               BlueprintName = "TheBestApp"
-               ReferencedContainer = "container:TheBestApp.xcodeproj">
+               BuildableName = "FindMyRestaurant.app"
+               BlueprintName = "FindMyRestaurant"
+               ReferencedContainer = "container:FindMyRestaurant.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2C29F1BF240EF68A00A3B182"
-               BuildableName = "TheBestAppTests.xctest"
-               BlueprintName = "TheBestAppTests"
-               ReferencedContainer = "container:TheBestApp.xcodeproj">
+               BuildableName = "FindMyRestaurantTests.xctest"
+               BlueprintName = "FindMyRestaurantTests"
+               ReferencedContainer = "container:FindMyRestaurant.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2C29F1CA240EF68A00A3B182"
-               BuildableName = "TheBestAppUITests.xctest"
-               BlueprintName = "TheBestAppUITests"
-               ReferencedContainer = "container:TheBestApp.xcodeproj">
+               BuildableName = "FindMyRestaurantUITests.xctest"
+               BlueprintName = "FindMyRestaurantUITests"
+               ReferencedContainer = "container:FindMyRestaurant.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2C29F1A9240EF68700A3B182"
-            BuildableName = "TheBestApp.app"
-            BlueprintName = "TheBestApp"
-            ReferencedContainer = "container:TheBestApp.xcodeproj">
+            BuildableName = "FindMyRestaurant.app"
+            BlueprintName = "FindMyRestaurant"
+            ReferencedContainer = "container:FindMyRestaurant.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -82,9 +82,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2C29F1A9240EF68700A3B182"
-            BuildableName = "TheBestApp.app"
-            BlueprintName = "TheBestApp"
-            ReferencedContainer = "container:TheBestApp.xcodeproj">
+            BuildableName = "FindMyRestaurant.app"
+            BlueprintName = "FindMyRestaurant"
+            ReferencedContainer = "container:FindMyRestaurant.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

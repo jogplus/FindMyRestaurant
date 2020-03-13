@@ -10,7 +10,7 @@
         <!--Find My Restaurant-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="HomeViewController" customModule="TheBestApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="HomeViewController" customModule="FindMyRestaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -81,7 +81,7 @@
         <!--Create Session-->
         <scene sceneID="zXS-8Q-CIP">
             <objects>
-                <viewController id="X9b-LD-1Re" customClass="CreateSessionViewController" customModule="TheBestApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="X9b-LD-1Re" customClass="CreateSessionViewController" customModule="FindMyRestaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="810-7A-f4e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,7 +178,7 @@
         <!--Session Info-->
         <scene sceneID="kax-i0-RU7">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="eYE-vc-BfH" customClass="InfoSessionViewController" customModule="TheBestApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="eYE-vc-BfH" customClass="InfoSessionViewController" customModule="FindMyRestaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="64d-yi-STD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -354,7 +354,7 @@ As a result, all party members must smile and be grateful once the app makes the
         <!--Vote Against a Category-->
         <scene sceneID="738-nf-TFs">
             <objects>
-                <viewController id="NVq-eO-cn0" customClass="CategoryVotingViewController" customModule="TheBestApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="NVq-eO-cn0" customClass="CategoryVotingViewController" customModule="FindMyRestaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vyu-9d-AV4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -363,14 +363,14 @@ As a result, all party members must smile and be grateful once the app makes the
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="101" id="37q-Du-U39" customClass="CategoryCell" customModule="TheBestApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="101" id="37q-Du-U39" customClass="CategoryCell" customModule="FindMyRestaurant" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="37q-Du-U39" id="vQS-ym-bIV">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="101"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhl-iD-eWY" customClass="CategoryCellDesignView" customModule="TheBestApp" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhl-iD-eWY" customClass="CategoryCellDesignView" customModule="FindMyRestaurant" customModuleProvider="target">
                                                     <rect key="frame" x="23" y="12" width="329" height="77"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jgI-vp-qc8">
@@ -456,7 +456,7 @@ As a result, all party members must smile and be grateful once the app makes the
         <!--Waiting View Controller-->
         <scene sceneID="Ia9-df-IqE">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="oc8-aO-TIM" customClass="WaitingViewController" customModule="TheBestApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="oc8-aO-TIM" customClass="WaitingViewController" customModule="FindMyRestaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SuB-Nu-NP2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -501,7 +501,7 @@ As a result, all party members must smile and be grateful once the app makes the
         <!--Show Result View Controller-->
         <scene sceneID="hQF-xd-cvJ">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="lWH-b2-NMP" customClass="ShowResultViewController" customModule="TheBestApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="lWH-b2-NMP" customClass="ShowResultViewController" customModule="FindMyRestaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5ju-6D-D5d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -735,7 +735,7 @@ As a result, all party members must smile and be grateful once the app makes the
         <!--Join Session-->
         <scene sceneID="mJO-DC-8k7">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="NZj-lf-ld4" customClass="JoinSessionViewController" customModule="TheBestApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="NZj-lf-ld4" customClass="JoinSessionViewController" customModule="FindMyRestaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JTg-xD-Ys7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -833,7 +833,7 @@ As a result, all party members must smile and be grateful once the app makes the
         <!--Waiting To Start-->
         <scene sceneID="Vm0-n5-SPH">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Uw5-Og-RN1" customClass="JoinerLobbyViewController" customModule="TheBestApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Uw5-Og-RN1" customClass="JoinerLobbyViewController" customModule="FindMyRestaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="43S-3p-MiC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

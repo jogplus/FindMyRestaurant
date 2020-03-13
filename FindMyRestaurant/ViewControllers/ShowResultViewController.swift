@@ -41,9 +41,6 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
     var phoneNumber: String = ""
     var onlyAddress:String = ""
     
-   // let apicall = "https://api.foursquare.com/v2/venues/542616e8498e7e2b1a06433d?client_id=0T5JYUXBZQEZN4KQWNE1150JUPO0BEQ3X2OPSUFBR3GTMVIK&client_secret=PPFXEGBT2CTUIP0ONYAAYOFERT2VQS510FLEPLWJ4HPVEWHC&v=20141020"
-    
-   
     
     @IBAction func phoneClicked(_ sender: Any) {
         let url: NSURL = URL(string: "TEL://\(phoneNumber)")! as NSURL
@@ -97,6 +94,13 @@ class ShowResultViewController: UIViewController, UITextViewDelegate, CLLocation
     
     func loadVenueDetails(){
         VotingSession.getFinalRestaurant() { (venue) in
+            if venue?.object(forKey: "id") == nil {
+                self.restaurantNameLabel.text = "Error: Exceeded FourSquare Premium Requests"
+                self.restaurantNameLabel.isHidden = false
+                self.loadingView.isHidden = true
+                return
+            }
+           
             self.restaurantNameLabel.text = venue!.value(forKey: "name") as? String ?? "None"
             let contactInfo = venue!.value(forKey: "contact") as? NSDictionary
             self.phoneNumber = contactInfo?.value(forKey: "phone") as? String ?? "None"

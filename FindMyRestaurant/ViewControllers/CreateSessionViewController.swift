@@ -91,18 +91,12 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
     func currentRadius() -> Double {
         let centerLocation = CLLocation(latitude: self.mapView.centerCoordinate.latitude, longitude: self.mapView.centerCoordinate.longitude)
         
-        print(self.mapView.centerCoordinate.latitude)
-        print(self.mapView.centerCoordinate.longitude)
         let topCenterCoordinate = self.topCenterCoordinate()
         let topCenterLocation = CLLocation(latitude: topCenterCoordinate.latitude, longitude: topCenterCoordinate.longitude)
-        
-        print(topCenterCoordinate.latitude)
-        print(topCenterCoordinate.longitude)
         
         VotingSession.location = centerLocation
         let radius = centerLocation.distance(from: topCenterLocation)
         
-        print(radius)
         VotingSession.radius = radius / 2.75
         return radius
     }

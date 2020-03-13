@@ -201,8 +201,6 @@ class VotingSession {
                             }
                         }
                         
-                        print(remainingCategories)
-                        
                         closure(remainingCategories, error)
                     } else {
                         closure(nil, error)
