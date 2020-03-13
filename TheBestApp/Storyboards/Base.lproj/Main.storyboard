@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RjL-In-SBX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RjL-In-SBX">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -399,6 +399,7 @@ As a result, all party members must smile and be grateful once the app makes the
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="qhl-iD-eWY" secondAttribute="bottom" constant="1" id="0qS-bQ-2eZ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="qhl-iD-eWY" secondAttribute="trailing" constant="8" id="JDT-lQ-f15"/>
@@ -447,19 +448,31 @@ As a result, all party members must smile and be grateful once the app makes the
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODn-C4-O72">
-                                <rect key="frame" x="67" y="220" width="240" height="227"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ODn-C4-O72">
+                                <rect key="frame" x="65" y="220" width="245" height="225"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="225" id="mb6-ZX-qfa"/>
+                                </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waiting For Votes..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Vu-M2-TWN">
-                                <rect key="frame" x="16" y="88" width="343" height="124"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting For Votes..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Vu-M2-TWN">
+                                <rect key="frame" x="10" y="90" width="355" height="105"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="105" id="ePq-nY-I7s"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="pWs-yU-Gdu" firstAttribute="trailing" secondItem="ODn-C4-O72" secondAttribute="trailing" constant="65" id="9Kv-ca-79E"/>
+                            <constraint firstItem="ODn-C4-O72" firstAttribute="leading" secondItem="pWs-yU-Gdu" secondAttribute="leading" constant="65" id="Ffm-Vb-HM0"/>
+                            <constraint firstItem="pWs-yU-Gdu" firstAttribute="trailing" secondItem="1Vu-M2-TWN" secondAttribute="trailing" constant="10" id="Oj9-da-zSR"/>
+                            <constraint firstItem="1Vu-M2-TWN" firstAttribute="top" secondItem="pWs-yU-Gdu" secondAttribute="top" constant="90" id="Vya-Xx-0yu"/>
+                            <constraint firstItem="1Vu-M2-TWN" firstAttribute="leading" secondItem="pWs-yU-Gdu" secondAttribute="leading" constant="10" id="ayN-D1-x2b"/>
+                            <constraint firstItem="ODn-C4-O72" firstAttribute="top" secondItem="1Vu-M2-TWN" secondAttribute="bottom" constant="25" id="xGV-7Q-SWG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="pWs-yU-Gdu"/>
                     </view>
                     <navigationItem key="navigationItem" id="vwh-af-55v"/>
@@ -481,10 +494,10 @@ As a result, all party members must smile and be grateful once the app makes the
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Mj-Wz-UVV">
-                                <rect key="frame" x="0.0" y="322" width="375" height="345"/>
+                                <rect key="frame" x="0.0" y="296" width="375" height="327"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Namedfffdfffffff fdfdffdfdf" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="guS-eW-rik">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                        <rect key="frame" x="10" y="0.0" width="355" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="65" id="dye-Gd-odh"/>
                                         </constraints>
@@ -562,7 +575,7 @@ As a result, all party members must smile and be grateful once the app makes the
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Address" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7LN-7e-sIo">
-                                        <rect key="frame" x="0.0" y="100" width="163" height="96"/>
+                                        <rect key="frame" x="10" y="100" width="163" height="96"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="96" id="6gY-Cx-Wap"/>
@@ -575,35 +588,35 @@ As a result, all party members must smile and be grateful once the app makes the
                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QB5-qH-IC3">
                                         <rect key="frame" x="100" y="196" width="175" height="65"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="i9r-XV-vpx">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="i9r-XV-vpx">
                                                 <rect key="frame" x="0.0" y="15" width="35" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="35" id="3cp-nW-JF4"/>
                                                     <constraint firstAttribute="height" constant="35" id="lI0-cS-Qt1"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="LeH-XM-IY4">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="LeH-XM-IY4">
                                                 <rect key="frame" x="35" y="15" width="35" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="9m1-FK-iQh"/>
                                                     <constraint firstAttribute="width" constant="35" id="AJ3-xi-e8j"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zL3-lH-oP0">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zL3-lH-oP0">
                                                 <rect key="frame" x="70" y="15" width="35" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="35" id="2nh-Qo-TxC"/>
                                                     <constraint firstAttribute="height" constant="35" id="bTH-li-qnk"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ju6-vt-wOH">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Ju6-vt-wOH">
                                                 <rect key="frame" x="105" y="15" width="35" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="35" id="VQG-Zd-xaZ"/>
                                                     <constraint firstAttribute="height" constant="35" id="zUb-wX-fsV"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nvE-ay-EAf">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nvE-ay-EAf">
                                                 <rect key="frame" x="140" y="15" width="35" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="35" id="4SZ-pJ-SZU"/>
@@ -635,6 +648,9 @@ As a result, all party members must smile and be grateful once the app makes the
                                             <constraint firstAttribute="bottom" secondItem="LeH-XM-IY4" secondAttribute="bottom" constant="15" id="yel-y0-hHV"/>
                                         </constraints>
                                     </view>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Nb4-3d-pFb">
+                                        <rect key="frame" x="177" y="176" width="20" height="20"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -651,15 +667,17 @@ As a result, all party members must smile and be grateful once the app makes the
                                     <constraint firstItem="7LN-7e-sIo" firstAttribute="top" secondItem="BG9-B8-v90" secondAttribute="bottom" id="Zel-o2-Egz"/>
                                     <constraint firstItem="7LN-7e-sIo" firstAttribute="leading" secondItem="guS-eW-rik" secondAttribute="leading" id="apT-N3-wYW"/>
                                     <constraint firstAttribute="bottom" secondItem="2jN-zH-nEr" secondAttribute="bottom" constant="18" id="ba9-Fs-plE"/>
+                                    <constraint firstItem="Nb4-3d-pFb" firstAttribute="centerY" secondItem="4Mj-Wz-UVV" secondAttribute="centerY" id="cck-1B-Eqe"/>
                                     <constraint firstItem="7LN-7e-sIo" firstAttribute="centerY" secondItem="rcz-FK-gpC" secondAttribute="centerY" id="cgI-56-uLc"/>
                                     <constraint firstItem="2jN-zH-nEr" firstAttribute="top" secondItem="QB5-qH-IC3" secondAttribute="bottom" id="ee2-eL-nLD"/>
-                                    <constraint firstItem="7LN-7e-sIo" firstAttribute="leading" secondItem="4Mj-Wz-UVV" secondAttribute="leading" id="gB0-I7-9Ev"/>
+                                    <constraint firstItem="7LN-7e-sIo" firstAttribute="leading" secondItem="4Mj-Wz-UVV" secondAttribute="leading" constant="10" id="gB0-I7-9Ev"/>
                                     <constraint firstItem="BG9-B8-v90" firstAttribute="top" secondItem="guS-eW-rik" secondAttribute="bottom" id="ok7-mo-BBZ"/>
+                                    <constraint firstItem="Nb4-3d-pFb" firstAttribute="centerX" secondItem="4Mj-Wz-UVV" secondAttribute="centerX" id="qHs-YU-g5V"/>
                                     <constraint firstItem="BG9-B8-v90" firstAttribute="leading" secondItem="4Mj-Wz-UVV" secondAttribute="leading" id="xIX-f4-hgx"/>
                                 </constraints>
                             </view>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bD6-q4-Y3K">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="322"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="296"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -675,9 +693,12 @@ As a result, all party members must smile and be grateful once the app makes the
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="35f-p9-ceS"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="h6N-7E-J9r"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="linkLabel" destination="nXa-70-QZi" id="ur6-5r-KZ2"/>
+                        <outlet property="loadingView" destination="Nb4-3d-pFb" id="etT-8e-25r"/>
                         <outlet property="mapView" destination="bD6-q4-Y3K" id="cdB-mr-Iq9"/>
                         <outlet property="phoneClicked" destination="K3m-8d-jFI" id="DKl-Cx-smV"/>
                         <outlet property="restaurantNameLabel" destination="guS-eW-rik" id="iyb-aM-gf6"/>
@@ -878,10 +899,9 @@ As a result, all party members must smile and be grateful once the app makes the
         <image name="link.circle.fill" catalog="system" width="64" height="60"/>
         <image name="map-colour-400px" width="400" height="481"/>
         <image name="phone.fill" catalog="system" width="64" height="56"/>
-        <image name="star.fill" catalog="system" width="64" height="58"/>
+        <image name="star" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qB4-g4-fUp"/>
         <segue reference="1UK-gX-7Id"/>
     </inferredMetricsTieBreakers>
 </document>
