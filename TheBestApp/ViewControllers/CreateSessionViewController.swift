@@ -17,6 +17,7 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var instructionLabel: UILabel!
+    @IBOutlet weak var priceSegment: UISegmentedControl!
     
     var radiusCircle: MKOverlay!
 //    fileprivate let locationManager: CLLocationManager = CLLocationManager()
@@ -28,15 +29,8 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
         super.viewDidLoad()
         
         createSessionButton.isHidden = true
-        
-//        overlayView.clipsToBounds = true
+        priceSegment.isHidden = true
         overlayView.layer.cornerRadius = 20
-//        overlayView.layer.shadowColor = UIColor.black.cgColor
-//        overlayView.layer.shadowOpacity = 0.1
-//        overlayView.layer.shadowOffset = CGSize(width: 0, height: -8)
-//        overlayView.layer.shadowRadius = 1
-//        overlayView.layer.shouldRasterize = true
-//        overlayView.layer.rasterizationScale = UIScreen.main.scale
         overlayView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner] // Top right corner, Top left corner respectively
 
         
@@ -72,9 +66,10 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         if locationStatus == .authorizedWhenInUse || locationStatus == .authorizedAlways {
             showCircle()
-            instructionLabel.text = "Setup the search radius and create the session:"
+            instructionLabel.text = "Setup the search radius and price range:"
             loadingView.isHidden = true
             createSessionButton.isHidden = false
+            priceSegment.isHidden = false
         }
     }
     
@@ -126,6 +121,7 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
     
     @IBAction func startSession(_ sender: Any) {
         VotingSession.loadedCategories = false
+        VotingSession.price = priceSegment.selectedSegmentIndex
         self.performSegue(withIdentifier: "sessionHostSegue", sender: nil)
     }
     
