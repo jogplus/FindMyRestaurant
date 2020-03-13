@@ -90,11 +90,20 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
 
     func currentRadius() -> Double {
         let centerLocation = CLLocation(latitude: self.mapView.centerCoordinate.latitude, longitude: self.mapView.centerCoordinate.longitude)
+        
+        print(self.mapView.centerCoordinate.latitude)
+        print(self.mapView.centerCoordinate.longitude)
         let topCenterCoordinate = self.topCenterCoordinate()
         let topCenterLocation = CLLocation(latitude: topCenterCoordinate.latitude, longitude: topCenterCoordinate.longitude)
-        VotingSession.location = topCenterLocation
+        
+        print(topCenterCoordinate.latitude)
+        print(topCenterCoordinate.longitude)
+        
+        VotingSession.location = centerLocation
         let radius = centerLocation.distance(from: topCenterLocation)
-        VotingSession.radius = radius
+        
+        print(radius)
+        VotingSession.radius = radius / 2.75
         return radius
     }
     
@@ -102,7 +111,7 @@ class CreateSessionViewController: UIViewController, MKMapViewDelegate, CLLocati
         if radiusCircle != nil {
             mapView.removeOverlay(radiusCircle)
         }
-        radiusCircle = MKCircle(center: self.locationManager.location!.coordinate, radius: currentRadius() / 2.5)
+        radiusCircle = MKCircle(center: self.locationManager.location!.coordinate, radius: currentRadius() / 2.75)
         mapView.addOverlay(radiusCircle)
     }
     

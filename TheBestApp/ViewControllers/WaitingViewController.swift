@@ -49,7 +49,7 @@ class WaitingViewController: UIViewController {
         animationView.play()
         
         if VotingSession.sessionCreater {
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.votesFinished), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.votesFinished), userInfo: nil, repeats: true)
         } else {
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.restaurantFound), userInfo: nil, repeats: true)
         }
@@ -62,10 +62,26 @@ class WaitingViewController: UIViewController {
                     if categories != nil {
                         print("getting rest")
                         SquareClient.fetchRestaurants(location: VotingSession.location, radius: VotingSession.radius, price: VotingSession.price, categories: categories! as NSArray) { (restaurants) in
-                            if restaurants.count > 0 {
+                            
+                            // Had to refilter the restaurant results because FourSquare API category filter is broken
+                            let catSet = Set<String>(categories!)
+                            var finalRestaurants = [NSDictionary]()
+                            for restaurant in restaurants {
+                                let catArr = restaurant.value(forKey: "categories") as! [NSDictionary]
+                                let catDict = catArr[0]
+                                if catSet.contains(catDict.value(forKey: "id") as! String) {
+                                    finalRestaurants.append(restaurant)
+                                }
+                            }
+                            
+                            
+                            
+                            if finalRestaurants.count > 0 {
                                 
-                                let finalRestaurant = restaurants.randomElement()
+                                let finalRestaurant = finalRestaurants.randomElement()
                                 let finalRestaurantId = finalRestaurant?.value(forKey: "id")
+                                
+                                
                                 
                                 SquareClient.fetchRestaurantInfo(restaurantId: finalRestaurantId as! String) { (finalRestaurantDict) in
                                     VotingSession.saveFinalRestaurant(restaurantDict: finalRestaurantDict) { (success, error) in

@@ -413,7 +413,6 @@ As a result, all party members must smile and be grateful once the app makes the
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="qhl-iD-eWY" secondAttribute="bottom" constant="1" id="0qS-bQ-2eZ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="qhl-iD-eWY" secondAttribute="trailing" constant="8" id="JDT-lQ-f15"/>

@@ -25,7 +25,7 @@ class SquareClient {
     }
     
     static func fetchCategories(location: CLLocation, radius: CLLocationDistance, price: Int, closure: @escaping ([NSDictionary]) -> Void) {
-        let queryParams = SquareClient.AUTH_QUERY_STRING + "ll=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=\(Int(radius))&openNow=1&section=food&price=\(price + 1)"
+        let queryParams = SquareClient.AUTH_QUERY_STRING + "ll=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=\(Int(radius))&openNow=1&section=food&llAcc=1&price=\(price + 1)"
         
         
 //        "ll=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=\(Int(radius))&query=restaurant"
@@ -82,7 +82,7 @@ class SquareClient {
     
     static func fetchRestaurants(location: CLLocation, radius: CLLocationDistance, price: Int, categories: NSArray, closure: @escaping ([NSDictionary]) -> Void) {
         
-        var queryParams = SquareClient.AUTH_QUERY_STRING + "ll=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=\(Int(radius))&openNow=1&section=food&price=\(price + 1)&categoryId="
+        var queryParams = SquareClient.AUTH_QUERY_STRING + "ll=\(location.coordinate.latitude),\(location.coordinate.longitude)&radius=\(Int(radius))&openNow=1&section=food&price=\(price + 1)&llAcc=1&categoryId="
         
         for category in categories {
             queryParams += category as! String + ","
