@@ -1,13 +1,8 @@
 # Find my Restaurant
 
-## Table of Contents
-
-1. [Overview](#Overview)
-1. [Product Spec](#Product-Spec)
-1. [Wireframes](#Wireframes)
-1. [Schema](#Schema)
-
 ## Overview
+
+<img src="https://i.imgur.com/REBVGqt.gif" width=250><img src="https://i.imgur.com/HqCg1hS.gif" width=250>
 
 ### Description
 
@@ -84,22 +79,10 @@ End screen
 
 - After choosing options and categories, it takes you to the end screen which shows a map with a chosen restaurant and its description
 
-## Wireframes
-
-<img src="https://i.imgur.com/cSNEXAE.png" width=600>
-
-### [BONUS] Digital Wireframes & Mockups
+### Digital Wireframes & Mockups
 
 <img src="https://imgur.com/B9H2SFm.png" width=600>
 <img src="https://imgur.com/TA0UjF8.png" width=600>
-
-### [BONUS] Interactive Prototype
-
-<img src="http://g.recordit.co/1buisvMUee.gif" width=250>
-
-## Final Demo
-
-<img src="https://i.imgur.com/REBVGqt.gif" width=250><img src="https://i.imgur.com/HqCg1hS.gif" width=250>
 
 ## Schema
 
